@@ -420,100 +420,41 @@ export default function HomePage() {
 
                 {/* Project visual */}
                 <ScaleReveal className="mt-10 md:mt-14">
-                  <div className="project-preview spotlight-card group relative aspect-[16/9] w-full overflow-hidden bg-neutral-950 text-white">
-                    <div className={`absolute inset-0 bg-gradient-to-br ${project.accent} opacity-70 transition-opacity duration-500 group-hover:opacity-90`} />
-                    <div className="absolute inset-0 bg-[linear-gradient(115deg,rgba(10,10,10,0.82),rgba(10,10,10,0.42)_48%,rgba(10,10,10,0.9))]" />
-                    <div className="portfolio-grid absolute inset-0 opacity-[0.2]" />
-                    <div className="absolute -left-8 top-1/2 h-[140%] w-28 -translate-y-1/2 rotate-12 bg-white/10 blur-sm transition-transform duration-700 group-hover:translate-x-8" />
-                    <div className="mockup-window absolute left-[8%] top-[24%] hidden w-[50%] border border-white/20 bg-black/35 p-3 shadow-2xl backdrop-blur-sm md:block">
-                      <div className="mb-3 flex items-center justify-between border-b border-white/10 pb-2">
-                        <div className="flex gap-1.5">
-                          <span className="size-2 bg-rose-300" />
-                          <span className="size-2 bg-amber-300" />
-                          <span className="size-2 bg-emerald-300" />
-                        </div>
-                        <span className="h-1.5 w-24 bg-white/15" />
-                      </div>
-                      <div className="grid grid-cols-[0.7fr_1fr] gap-3">
-                        <div className="space-y-2 border-r border-white/10 pr-3">
-                          {[0, 1, 2, 3, 4].map((item) => (
-                            <span
-                              key={item}
-                              className="block h-2 bg-white/15"
-                              style={{ width: `${92 - item * 10}%` }}
-                            />
-                          ))}
-                        </div>
-                        <div>
-                          <div className="mb-3 grid grid-cols-3 gap-2">
-                            {[0, 1, 2].map((item) => (
-                              <span key={item} className="h-10 bg-white/10" />
-                            ))}
-                          </div>
-                          <div className="space-y-2">
-                            <span className="block h-2 w-full bg-white/20" />
-                            <span className="block h-2 w-4/5 bg-white/10" />
-                            <span className="block h-2 w-3/5 bg-white/10" />
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                  <div className="project-preview spotlight-card group relative flex aspect-[16/9] w-full items-end overflow-hidden bg-neutral-950 p-5 text-white md:p-8">
+                    <div className={`absolute inset-0 bg-gradient-to-br ${project.accent} opacity-45 transition-opacity duration-500 group-hover:opacity-65`} />
+                    <div className="absolute inset-0 bg-[linear-gradient(115deg,rgba(10,10,10,0.88),rgba(10,10,10,0.56)_52%,rgba(10,10,10,0.92))]" />
+                    <div className="portfolio-grid absolute inset-0 opacity-[0.14]" />
 
-                    <div className="absolute left-5 top-5 right-5 flex items-center justify-between gap-4 border-b border-white/20 pb-4 text-[10px] font-semibold uppercase tracking-[0.22em] text-white/55 md:left-8 md:right-8 md:top-8">
-                      <span>{project.category}</span>
-                      <span className="hidden shrink-0 sm:inline">{project.metric}</span>
-                    </div>
-
-                    <div className="project-hover-detail absolute left-5 top-20 flex flex-wrap gap-2 md:left-8 md:top-24">
-                      {project.details.map((item) => (
-                        <span
-                          key={item}
-                          className="border border-white/20 bg-black/20 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-white/65 backdrop-blur"
-                        >
-                          {item}
-                        </span>
-                      ))}
-                    </div>
-
-                    <div className="absolute inset-x-5 bottom-5 grid gap-4 md:inset-x-8 md:bottom-8 md:grid-cols-[minmax(0,1fr)_280px] md:items-end">
-                      <div className="transition-transform duration-500 ease-out group-hover:translate-x-2">
-                        <p className="text-xs font-medium uppercase tracking-[0.25em] text-white/45">
+                    <div className="relative z-10 flex w-full flex-col gap-10 md:flex-row md:items-end md:justify-between">
+                      <div>
+                        <p className="text-xs font-medium uppercase tracking-[0.25em] text-white/40">
                           Project Preview
                         </p>
 
-                        <p className="mt-3 max-w-4xl text-3xl font-black uppercase leading-[0.9] tracking-normal md:text-6xl lg:text-8xl">
+                        <p className="mt-3 max-w-5xl text-3xl font-black uppercase leading-[0.9] tracking-normal md:text-6xl lg:text-8xl">
                           {project.title}
                         </p>
                       </div>
 
-                      <div className="hidden border border-white/20 bg-black/25 p-4 backdrop-blur md:block">
-                        <div className="mb-5 flex justify-between text-[10px] uppercase tracking-[0.2em] text-white/45">
-                          <span>Pipeline</span>
-                          <span>Live</span>
-                        </div>
-
-                        <div className="space-y-3">
-                          {project.stack.map((item, index) => (
-                            <div key={item} className="grid grid-cols-[76px_1fr] items-center gap-3">
-                              <span className="font-mono text-[10px] uppercase text-white/55">
-                                {item}
-                              </span>
-                              <span className="h-1.5 overflow-hidden bg-white/15">
-                                <span
-                                  className="preview-meter block h-full bg-white"
-                                  style={{ width: `${50 + index * 12}%` }}
-                                />
-                              </span>
-                            </div>
+                      <div className="max-w-xs border-t border-white/20 pt-4 md:border-t-0 md:pt-0">
+                        <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-white/35">
+                          {project.category}
+                        </p>
+                        <p className="mt-2 text-sm font-semibold uppercase tracking-[0.12em] text-white/75">
+                          {project.metric}
+                        </p>
+                        <div className="mt-5 flex flex-wrap gap-2">
+                          {project.stack.map((item) => (
+                            <span
+                              key={item}
+                              className="border border-white/15 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.16em] text-white/55"
+                            >
+                              {item}
+                            </span>
                           ))}
                         </div>
                       </div>
                     </div>
-
-                    <div className="floating-node absolute right-[18%] top-[22%] size-24 border border-white/25 bg-white/10 backdrop-blur-sm" />
-                    <div className="floating-node-delayed absolute right-[8%] top-[42%] size-12 border border-white/25 bg-white/10 backdrop-blur-sm" />
-                    <div className="absolute bottom-[24%] right-[14%] hidden h-28 w-px bg-white/25 md:block" />
-                    <div className="absolute bottom-[24%] right-[14%] hidden h-px w-28 bg-white/25 md:block" />
                   </div>
                 </ScaleReveal>
 

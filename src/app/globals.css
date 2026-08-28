@@ -236,19 +236,6 @@ html[data-active-section="contact"] [data-nav="contact"]::after {
   transform: translateX(-28%);
 }
 
-.project-hover-detail {
-  opacity: 0;
-  transform: translateY(8px);
-  transition:
-    opacity 260ms ease,
-    transform 260ms ease;
-}
-
-.project-preview:hover .project-hover-detail {
-  opacity: 1;
-  transform: translateY(0);
-}
-
 .profile-frame::after {
   position: absolute;
   inset: auto 0 0;
@@ -330,41 +317,6 @@ html[data-active-section="contact"] [data-nav="contact"]::after {
   animation: marquee 26s linear infinite;
 }
 
-.project-preview::after {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(105deg, transparent 0 42%, rgba(255, 255, 255, 0.16) 50%, transparent 58%);
-  content: "";
-  transform: translateX(-100%);
-  transition: transform 900ms ease;
-}
-
-.project-preview:hover::after {
-  transform: translateX(100%);
-}
-
-.mockup-window {
-  transform: perspective(900px) rotateX(0deg) rotateY(-9deg);
-  transform-origin: left center;
-  transition: transform 520ms ease;
-}
-
-.project-preview:hover .mockup-window {
-  transform: perspective(900px) rotateX(0deg) rotateY(-3deg) translateX(8px);
-}
-
-.preview-meter {
-  animation: meter-glow 2.6s ease-in-out infinite;
-}
-
-.floating-node {
-  animation: float-node 6s ease-in-out infinite;
-}
-
-.floating-node-delayed {
-  animation: float-node 7s ease-in-out 900ms infinite;
-}
-
 @keyframes grid-drift {
   from {
     background-position: 0 0;
@@ -440,29 +392,6 @@ html[data-active-section="contact"] [data-nav="contact"]::after {
     transform: translateX(-50%);
   }
 }
-
-@keyframes meter-glow {
-  0%,
-  100% {
-    opacity: 0.42;
-  }
-
-  50% {
-    opacity: 1;
-  }
-}
-
-@keyframes float-node {
-  0%,
-  100% {
-    transform: translate3d(0, 0, 0) rotate(0deg);
-  }
-
-  50% {
-    transform: translate3d(-14px, 12px, 0) rotate(5deg);
-  }
-}
-
 
 /* =========================================================
    MOTION
