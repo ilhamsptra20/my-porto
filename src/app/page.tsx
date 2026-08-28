@@ -24,6 +24,8 @@ const projects = [
     accent: "from-emerald-300 via-cyan-300 to-blue-500",
     metric: "Multi-tenant ledger",
     details: ["Ledger", "Roles", "Reports"],
+    image:
+      "https://cdn.uxmagic.ai/public/seo-resources-pages/image_794_gz32vs.png",
     href: "#",
   },
   {
@@ -36,6 +38,8 @@ const projects = [
     accent: "from-amber-300 via-orange-400 to-rose-500",
     metric: "Callback orchestration",
     details: ["Callback", "Queue", "Retry"],
+    image:
+      "https://staticassetsdolooma.blob.core.windows.net/web/assets/images/home/developer_site.png",
     href: "#",
   },
   {
@@ -48,6 +52,8 @@ const projects = [
     accent: "from-violet-300 via-fuchsia-400 to-sky-400",
     metric: "Operational ERP",
     details: ["Billing", "Journal", "Admin"],
+    image:
+      "https://img.riba2534.cn/images/2026/05/06_dashboard.png",
     href: "#",
   },
 ];
@@ -421,11 +427,19 @@ export default function HomePage() {
                 {/* Project visual */}
                 <ScaleReveal className="mt-10 md:mt-14">
                   <div className="project-preview spotlight-card group relative flex aspect-[16/9] w-full items-end overflow-hidden bg-neutral-950 p-5 text-white md:p-8">
-                    <div className={`absolute inset-0 bg-gradient-to-br ${project.accent} opacity-45 transition-opacity duration-500 group-hover:opacity-65`} />
-                    <div className="absolute inset-0 bg-[linear-gradient(115deg,rgba(10,10,10,0.88),rgba(10,10,10,0.56)_52%,rgba(10,10,10,0.92))]" />
-                    <div className="portfolio-grid absolute inset-0 opacity-[0.14]" />
+                    <div
+                      className="project-image absolute inset-0 bg-cover bg-center opacity-80 transition duration-700 group-hover:scale-[1.03] group-hover:opacity-100"
+                      style={
+                        {
+                          backgroundImage: `url("${project.image}")`,
+                        } as CSSProperties
+                      }
+                    />
+                    <div className={`absolute inset-0 bg-gradient-to-br ${project.accent} opacity-20 transition-opacity duration-500 group-hover:opacity-0`} />
+                    <div className="absolute inset-0 bg-[linear-gradient(115deg,rgba(10,10,10,0.76),rgba(10,10,10,0.22)_52%,rgba(10,10,10,0.82))] transition-opacity duration-500 group-hover:opacity-0" />
+                    <div className="portfolio-grid absolute inset-0 opacity-[0.06] transition-opacity duration-500 group-hover:opacity-0" />
 
-                    <div className="relative z-10 flex w-full flex-col gap-10 md:flex-row md:items-end md:justify-between">
+                    <div className="relative z-10 flex w-full flex-col gap-10 transition-opacity duration-500 group-hover:opacity-0 md:flex-row md:items-end md:justify-between">
                       <div>
                         <p className="text-xs font-medium uppercase tracking-[0.25em] text-white/40">
                           Project Preview

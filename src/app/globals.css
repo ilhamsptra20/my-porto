@@ -317,6 +317,14 @@ html[data-active-section="contact"] [data-nav="contact"]::after {
   animation: marquee 26s linear infinite;
 }
 
+.project-image {
+  filter: grayscale(35%) saturate(0.86) contrast(0.96);
+}
+
+.project-preview:hover .project-image {
+  filter: grayscale(0%) saturate(1) contrast(1);
+}
+
 @keyframes grid-drift {
   from {
     background-position: 0 0;
