@@ -2,13 +2,16 @@ import {
   ArrowDownIcon,
   ArrowTopRightOnSquareIcon,
 } from "@heroicons/react/24/outline";
+import type { CSSProperties } from "react";
 import {
   Reveal,
   ScaleReveal,
   Stagger,
   StaggerItem,
 } from "@/components/motion";
-import { ScrollProgress } from "@/components/scroll-progress";
+import { MagneticLink } from "@/components/magnetic-link";
+import { PortfolioChrome } from "@/components/portfolio-chrome";
+import { Preloader } from "@/components/preloader";
 
 const projects = [
   {
@@ -20,6 +23,7 @@ const projects = [
     stack: ["Next.js", "Laravel", "PostgreSQL", "Redis"],
     accent: "from-emerald-300 via-cyan-300 to-blue-500",
     metric: "Multi-tenant ledger",
+    details: ["Ledger", "Roles", "Reports"],
     href: "#",
   },
   {
@@ -31,6 +35,7 @@ const projects = [
     stack: ["Laravel", "Redis", "REST API", "Queue"],
     accent: "from-amber-300 via-orange-400 to-rose-500",
     metric: "Callback orchestration",
+    details: ["Callback", "Queue", "Retry"],
     href: "#",
   },
   {
@@ -42,19 +47,31 @@ const projects = [
     stack: ["Laravel", "Blade", "MySQL", "Bootstrap"],
     accent: "from-violet-300 via-fuchsia-400 to-sky-400",
     metric: "Operational ERP",
+    details: ["Billing", "Journal", "Admin"],
     href: "#",
   },
 ];
 
-const stackTicker = [
-  "Next.js",
-  "Laravel",
-  "PostgreSQL",
-  "Redis",
-  "REST APIs",
-  "Queues",
+const techTicker = [
+  { label: "Next.js", slug: "nextdotjs" },
+  { label: "React", slug: "react" },
+  { label: "Laravel", slug: "laravel" },
+  { label: "PHP", slug: "php" },
+  { label: "PostgreSQL", slug: "postgresql" },
+  { label: "MySQL", slug: "mysql" },
+  { label: "Redis", slug: "redis" },
+  { label: "Tailwind CSS", slug: "tailwindcss" },
+  { label: "Git", slug: "git" },
+  { label: "GitHub", slug: "github" },
+];
+
+const capabilities = [
   "Architecture",
-  "Enterprise Apps",
+  "Engineering",
+  "Database",
+  "Responsibility",
+  "Integration",
+  "Product Thinking",
 ];
 
 const experience = [
@@ -81,7 +98,8 @@ const experience = [
 export default function HomePage() {
   return (
     <main className="relative min-h-screen overflow-hidden bg-[#f3f0e9] text-neutral-950">
-      <ScrollProgress />
+      <Preloader />
+      <PortfolioChrome />
 
       <div className="pointer-events-none fixed inset-0 -z-10">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_12%_18%,rgba(19,78,74,0.18),transparent_28%),radial-gradient(circle_at_86%_12%,rgba(234,88,12,0.16),transparent_30%),linear-gradient(to_bottom,rgba(243,240,233,0.84),rgba(243,240,233,1)_42%)]" />
@@ -106,19 +124,23 @@ export default function HomePage() {
         <div className="mx-auto flex max-w-[1600px] items-center justify-between px-5 py-4 md:px-8 lg:px-12">
           <a
             href="#top"
-            className="text-sm font-semibold uppercase tracking-[0.18em]"
+            data-nav="top"
+            className="group flex items-center gap-3 text-sm font-semibold uppercase tracking-[0.18em]"
           >
+            <span className="monogram-mark grid size-9 place-items-center border border-black bg-neutral-950 text-[11px] text-[#f3f0e9] transition-transform duration-300 group-hover:rotate-6">
+              MIS
+            </span>
             Ilham Saputra
           </a>
 
           <nav className="flex items-center gap-5 text-xs font-medium uppercase tracking-[0.16em] md:gap-8">
-            <a className="transition-opacity hover:opacity-50" href="#work">
+            <a data-nav="work" className="nav-link transition-opacity hover:opacity-50" href="#work">
               Work
             </a>
-            <a className="transition-opacity hover:opacity-50" href="#about">
+            <a data-nav="about" className="nav-link transition-opacity hover:opacity-50" href="#about">
               About
             </a>
-            <a className="transition-opacity hover:opacity-50" href="#contact">
+            <a data-nav="contact" className="nav-link transition-opacity hover:opacity-50" href="#contact">
               Contact
             </a>
           </nav>
@@ -186,20 +208,20 @@ export default function HomePage() {
               </Reveal>
               <Reveal delay={0.45}>
                 <div className="mt-8 flex flex-wrap gap-3">
-                  <a
+                  <MagneticLink
                     href="#work"
-                    className="inline-flex items-center gap-2 border border-black bg-black px-5 py-3 text-xs font-semibold uppercase tracking-[0.15em] text-white transition-colors hover:bg-transparent hover:text-black"
+                    className="spotlight-card magnetic-link inline-flex items-center gap-2 border border-black bg-black px-5 py-3 text-xs font-semibold uppercase tracking-[0.15em] text-white transition-colors hover:bg-transparent hover:text-black"
                   >
                     View work
                     <ArrowDownIcon className="size-4" />
-                  </a>
+                  </MagneticLink>
 
-                  <a
+                  <MagneticLink
                     href="#contact"
-                    className="inline-flex items-center gap-2 border border-black px-5 py-3 text-xs font-semibold uppercase tracking-[0.15em] transition-colors hover:bg-black hover:text-white"
+                    className="spotlight-card magnetic-link inline-flex items-center gap-2 border border-black px-5 py-3 text-xs font-semibold uppercase tracking-[0.15em] transition-colors hover:bg-black hover:text-white"
                   >
                     Contact me
-                  </a>
+                  </MagneticLink>
                 </div>
               </Reveal>
             </div>
@@ -232,13 +254,23 @@ export default function HomePage() {
                   </div>
                 </div>
 
-                <div className="mt-7 grid grid-cols-3 gap-2">
-                  {[78, 56, 88, 64, 92, 48].map((height, index) => (
-                    <span
-                      key={`${height}-${index}`}
-                      className="data-bar block bg-gradient-to-t from-emerald-400 to-cyan-200"
-                      style={{ height }}
-                    />
+                <div className="mt-7 space-y-3 border-t border-white/10 pt-4 text-xs text-white/55">
+                  {[
+                    ["Currently building", "Financial systems"],
+                    ["Main stack", "Next.js / Laravel"],
+                    ["Strength", "Business logic & architecture"],
+                  ].map(([label, value]) => (
+                    <div
+                      key={label}
+                      className="grid gap-1 border-b border-white/10 pb-3 last:border-b-0 last:pb-0"
+                    >
+                      <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-white/30">
+                        {label}
+                      </span>
+                      <span className="font-semibold text-[#f3f0e9]">
+                        {value}
+                      </span>
+                    </div>
                   ))}
                 </div>
               </div>
@@ -284,21 +316,54 @@ export default function HomePage() {
       </section>
 
       <div className="overflow-hidden border-y border-black bg-neutral-950 py-4 text-[#f3f0e9]">
-        <div className="marquee-track flex w-max gap-10 text-xs font-semibold uppercase tracking-[0.2em]">
-          {[...stackTicker, ...stackTicker].map((item, index) => (
-            <span key={`${item}-${index}`} className="flex items-center gap-10">
-              {item}
-              <span className="h-px w-10 bg-emerald-300" />
+        <div className="marquee-track flex w-max gap-8">
+          {[...techTicker, ...techTicker].map((item, index) => (
+            <span
+              key={`${item.slug}-${index}`}
+              className="flex items-center gap-8"
+            >
+              <span className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.2em] text-white/78">
+                <span
+                  aria-hidden="true"
+                  className="tech-ticker-icon size-5 bg-[#f3f0e9]"
+                  style={
+                    {
+                      "--icon-url": `url("https://cdn.simpleicons.org/${item.slug}/f3f0e9")`,
+                    } as CSSProperties
+                  }
+                />
+                {item.label}
+              </span>
+              <span className="h-px w-8 bg-emerald-300" />
             </span>
           ))}
         </div>
       </div>
 
+      <section
+        aria-label="Capabilities"
+        className="border-b border-black/20 bg-[#e8e2d6]/70 px-5 py-5 md:px-8 lg:px-12"
+      >
+        <div className="mx-auto grid max-w-[1600px] grid-cols-2 gap-px overflow-hidden border border-black/15 bg-black/15 sm:grid-cols-3 lg:grid-cols-6">
+          {capabilities.map((item) => (
+            <div
+              key={item}
+              className="spotlight-card group relative flex min-h-24 items-end overflow-hidden bg-[#f3f0e9] p-4 text-neutral-950 transition-colors duration-300 hover:bg-neutral-950 hover:text-[#f3f0e9]"
+            >
+              <h3 className="text-sm font-black uppercase tracking-[0.12em]">
+                {item}
+              </h3>
+              <span className="absolute right-5 top-5 h-px w-10 bg-black/20 transition-colors duration-300 group-hover:bg-emerald-300" />
+            </div>
+          ))}
+        </div>
+      </section>
+
       <div aria-hidden="true" className="diagonal-band h-14 border-b border-black/20" />
 
       <section
         id="work"
-        className="relative mx-auto max-w-[1600px] px-5 py-20 md:px-8 md:py-28 lg:px-12 lg:py-36"
+        className="section-wipe relative mx-auto max-w-[1600px] px-5 py-20 md:px-8 md:py-28 lg:px-12 lg:py-36"
       >
         <div
           aria-hidden="true"
@@ -323,11 +388,21 @@ export default function HomePage() {
 
           <div className="space-y-28 lg:space-y-40">
             {projects.map((project) => (
-              <article key={project.index}>
+              <article key={project.index} className="relative">
+                <div
+                  aria-hidden="true"
+                  className="sticky-project-index pointer-events-none absolute left-0 top-4 hidden text-[12rem] font-black leading-none text-black/[0.035] lg:block"
+                >
+                  {project.index}
+                </div>
+
                 {/* Project heading */}
                 <Reveal>
                   <div className="grid gap-6 md:grid-cols-[100px_minmax(0,1fr)] md:gap-10">
-                    <span className="text-xs font-semibold tracking-[0.18em]">
+                    <span className="sticky top-28 hidden text-xs font-semibold tracking-[0.18em] text-neutral-500 md:block">
+                      {project.index}
+                    </span>
+                    <span className="text-xs font-semibold tracking-[0.18em] text-neutral-500 md:hidden">
                       {project.index}
                     </span>
 
@@ -345,26 +420,59 @@ export default function HomePage() {
 
                 {/* Project visual */}
                 <ScaleReveal className="mt-10 md:mt-14">
-                  <div className="project-preview group relative aspect-[16/9] w-full overflow-hidden bg-neutral-950 text-white">
+                  <div className="project-preview spotlight-card group relative aspect-[16/9] w-full overflow-hidden bg-neutral-950 text-white">
                     <div className={`absolute inset-0 bg-gradient-to-br ${project.accent} opacity-70 transition-opacity duration-500 group-hover:opacity-90`} />
                     <div className="absolute inset-0 bg-[linear-gradient(115deg,rgba(10,10,10,0.82),rgba(10,10,10,0.42)_48%,rgba(10,10,10,0.9))]" />
                     <div className="portfolio-grid absolute inset-0 opacity-[0.2]" />
                     <div className="absolute -left-8 top-1/2 h-[140%] w-28 -translate-y-1/2 rotate-12 bg-white/10 blur-sm transition-transform duration-700 group-hover:translate-x-8" />
-                    <div className="absolute left-[12%] top-[28%] hidden w-[44%] border border-white/15 bg-black/20 p-4 backdrop-blur-sm md:block">
-                      <div className="mb-4 grid grid-cols-4 gap-2">
-                        {[0, 1, 2, 3].map((item) => (
-                          <span key={item} className="h-12 bg-white/10" />
-                        ))}
+                    <div className="mockup-window absolute left-[8%] top-[24%] hidden w-[50%] border border-white/20 bg-black/35 p-3 shadow-2xl backdrop-blur-sm md:block">
+                      <div className="mb-3 flex items-center justify-between border-b border-white/10 pb-2">
+                        <div className="flex gap-1.5">
+                          <span className="size-2 bg-rose-300" />
+                          <span className="size-2 bg-amber-300" />
+                          <span className="size-2 bg-emerald-300" />
+                        </div>
+                        <span className="h-1.5 w-24 bg-white/15" />
                       </div>
-                      <div className="space-y-2">
-                        <span className="block h-2 w-3/4 bg-white/20" />
-                        <span className="block h-2 w-1/2 bg-white/10" />
+                      <div className="grid grid-cols-[0.7fr_1fr] gap-3">
+                        <div className="space-y-2 border-r border-white/10 pr-3">
+                          {[0, 1, 2, 3, 4].map((item) => (
+                            <span
+                              key={item}
+                              className="block h-2 bg-white/15"
+                              style={{ width: `${92 - item * 10}%` }}
+                            />
+                          ))}
+                        </div>
+                        <div>
+                          <div className="mb-3 grid grid-cols-3 gap-2">
+                            {[0, 1, 2].map((item) => (
+                              <span key={item} className="h-10 bg-white/10" />
+                            ))}
+                          </div>
+                          <div className="space-y-2">
+                            <span className="block h-2 w-full bg-white/20" />
+                            <span className="block h-2 w-4/5 bg-white/10" />
+                            <span className="block h-2 w-3/5 bg-white/10" />
+                          </div>
+                        </div>
                       </div>
                     </div>
 
                     <div className="absolute left-5 top-5 right-5 flex items-center justify-between gap-4 border-b border-white/20 pb-4 text-[10px] font-semibold uppercase tracking-[0.22em] text-white/55 md:left-8 md:right-8 md:top-8">
                       <span>{project.category}</span>
                       <span className="hidden shrink-0 sm:inline">{project.metric}</span>
+                    </div>
+
+                    <div className="project-hover-detail absolute left-5 top-20 flex flex-wrap gap-2 md:left-8 md:top-24">
+                      {project.details.map((item) => (
+                        <span
+                          key={item}
+                          className="border border-white/20 bg-black/20 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-white/65 backdrop-blur"
+                        >
+                          {item}
+                        </span>
+                      ))}
                     </div>
 
                     <div className="absolute inset-x-5 bottom-5 grid gap-4 md:inset-x-8 md:bottom-8 md:grid-cols-[minmax(0,1fr)_280px] md:items-end">
@@ -438,7 +546,7 @@ export default function HomePage() {
           </div>
       </section>
 
-      <section className="relative overflow-hidden bg-neutral-950 text-[#f3f0e9]">
+      <section className="section-wipe relative overflow-hidden bg-neutral-950 text-[#f3f0e9]">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_80%_10%,rgba(45,212,191,0.18),transparent_28%),radial-gradient(circle_at_20%_88%,rgba(251,146,60,0.12),transparent_26%)]" />
         <div className="portfolio-grid pointer-events-none absolute inset-0 opacity-[0.09]" />
         <div className="mx-auto max-w-[1600px] px-5 py-20 md:px-8 md:py-28 lg:px-12 lg:py-36">
@@ -466,7 +574,7 @@ export default function HomePage() {
               >
 
                 <article
-                  className="group grid gap-7 border-b border-white/15 py-10 md:grid-cols-[80px_180px_minmax(0,1fr)_360px] md:gap-10 md:py-12"
+                  className="spotlight-card group grid gap-7 border-b border-white/15 py-10 md:grid-cols-[80px_180px_minmax(0,1fr)_360px] md:gap-10 md:py-12"
                 >
                   <span className="text-xs font-medium tracking-[0.18em] text-white/30">
                     {String(index + 1).padStart(2, "0")}
@@ -504,9 +612,9 @@ export default function HomePage() {
 
       <section
         id="about"
-        className="mx-auto max-w-[1600px] px-5 py-20 md:px-8 md:py-28 lg:px-12 lg:py-36"
+        className="section-wipe relative mx-auto max-w-[1600px] px-5 py-20 md:px-8 md:py-28 lg:px-12 lg:py-36"
       >
-        <div className="grid gap-14 lg:grid-cols-[1.1fr_0.9fr] lg:gap-20">
+        <div className="grid gap-14 lg:grid-cols-[1fr_0.8fr_0.8fr] lg:gap-14">
           <div>
             <p className="mb-5 text-xs font-semibold uppercase tracking-[0.2em] text-neutral-500">
               About
@@ -520,6 +628,20 @@ export default function HomePage() {
               </h2>
             </Reveal>
           </div>
+
+          <ScaleReveal delay={0.08}>
+            <div className="profile-frame spotlight-card relative aspect-[4/5] overflow-hidden border border-black bg-neutral-950 shadow-[12px_12px_0_rgba(10,10,10,0.1)]">
+              <div className="absolute inset-0 bg-[url('/images/profile-placeholder.png')] bg-cover bg-center opacity-80 grayscale" />
+              <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(10,10,10,0.08),rgba(10,10,10,0.62))]" />
+              <div className="portfolio-noise absolute inset-0 opacity-20" />
+              <span className="absolute bottom-4 left-4 text-xs font-semibold uppercase tracking-[0.22em] text-white/55">
+                Profile Slot
+              </span>
+              <span className="absolute right-4 top-4 grid size-10 place-items-center border border-white/20 text-[10px] font-semibold uppercase tracking-[0.12em] text-white/55">
+                MIS
+              </span>
+            </div>
+          </ScaleReveal>
 
           <Reveal delay={0.15}>
             <div className="flex flex-col justify-end">
@@ -597,7 +719,7 @@ export default function HomePage() {
 
       <footer
         id="contact"
-        className="border-t border-black bg-[#f3f0e9] text-neutral-950"
+        className="section-wipe relative border-t border-black bg-[#f3f0e9] text-neutral-950"
       >
         <div className="mx-auto max-w-[1600px] px-5 py-20 md:px-8 md:py-28 lg:px-12 lg:py-36">
           <p className="mb-6 text-xs font-semibold uppercase tracking-[0.2em] text-neutral-500">
@@ -629,7 +751,7 @@ export default function HomePage() {
                 <div className="flex flex-col">
                   <a
                     href="mailto:your@email.com"
-                    className="group flex items-center justify-between border-b border-black/20 py-5"
+                    className="spotlight-card group flex items-center justify-between border-b border-black/20 py-5"
                   >
                     <span className="text-lg font-semibold uppercase tracking-normal">
                       Email
@@ -642,7 +764,7 @@ export default function HomePage() {
                     href="https://github.com/ilhamsptra20"
                     target="_blank"
                     rel="noreferrer"
-                    className="group flex items-center justify-between border-b border-black/20 py-5"
+                    className="spotlight-card group flex items-center justify-between border-b border-black/20 py-5"
                   >
                     <span className="text-lg font-semibold uppercase tracking-normal">
                       Github
@@ -655,7 +777,7 @@ export default function HomePage() {
                     href="#"
                     target="_blank"
                     rel="noreferrer"
-                    className="group flex items-center justify-between border-b border-black/20 py-5"
+                    className="spotlight-card group flex items-center justify-between border-b border-black/20 py-5"
                   >
                     <span className="text-lg font-semibold uppercase tracking-normal">
                       LinkedIn
@@ -668,7 +790,7 @@ export default function HomePage() {
                     href="/cv.pdf"
                     target="_blank"
                     rel="noreferrer"
-                    className="group flex items-center justify-between border-b border-black/20 py-5"
+                    className="spotlight-card group flex items-center justify-between border-b border-black/20 py-5"
                   >
                     <span className="text-lg font-semibold uppercase tracking-normal">
                       Resume / CV
