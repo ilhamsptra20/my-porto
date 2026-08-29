@@ -27,35 +27,21 @@ export function PortfolioChrome() {
         x = event.clientX;
         y = event.clientY;
 
+        const target = event.target;
+        root.dataset.cursor =
+          target instanceof Element && target.closest("a, button, .spotlight-card")
+            ? "active"
+            : "";
+
         if (!frame) {
           frame = window.requestAnimationFrame(moveCursor);
         }
       };
 
-      const onPointerOver = (event: PointerEvent) => {
-        const target = event.target;
-
-        if (target instanceof Element && target.closest("a, button, .spotlight-card")) {
-          root.dataset.cursor = "active";
-        }
-      };
-
-      const onPointerOut = (event: PointerEvent) => {
-        const target = event.target;
-
-        if (target instanceof Element && target.closest("a, button, .spotlight-card")) {
-          root.dataset.cursor = "";
-        }
-      };
-
       window.addEventListener("pointermove", onPointerMove, { passive: true });
-      window.addEventListener("pointerover", onPointerOver, { passive: true });
-      window.addEventListener("pointerout", onPointerOut, { passive: true });
 
       return () => {
         window.removeEventListener("pointermove", onPointerMove);
-        window.removeEventListener("pointerover", onPointerOver);
-        window.removeEventListener("pointerout", onPointerOut);
 
         if (frame) {
           window.cancelAnimationFrame(frame);
