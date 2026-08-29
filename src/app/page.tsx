@@ -1,7 +1,9 @@
 import {
   ArrowDownIcon,
   ArrowTopRightOnSquareIcon,
+  ArrowUpIcon,
 } from "@heroicons/react/24/outline";
+import Link from "next/link";
 import type { CSSProperties } from "react";
 import {
   Reveal,
@@ -12,51 +14,7 @@ import {
 import { MagneticLink } from "@/components/magnetic-link";
 import { PortfolioChrome } from "@/components/portfolio-chrome";
 import { Preloader } from "@/components/preloader";
-
-const projects = [
-  {
-    index: "01",
-    category: "FINTECH / CORE BANKING",
-    title: "SAKTI COREBANKING V2",
-    description:
-      "A modern core banking platform designed for multi-cooperative financial operations with scalable frontend and backend architecture.",
-    stack: ["Next.js", "Laravel", "PostgreSQL", "Redis"],
-    accent: "from-emerald-300 via-cyan-300 to-blue-500",
-    metric: "Multi-tenant ledger",
-    details: ["Ledger", "Roles", "Reports"],
-    image:
-      "https://cdn.uxmagic.ai/public/seo-resources-pages/image_794_gz32vs.png",
-    href: "#",
-  },
-  {
-    index: "02",
-    category: "PAYMENT INFRASTRUCTURE",
-    title: "PAYMENT GATEWAY MIDDLEWARE",
-    description:
-      "Middleware for handling payment processing, callbacks, transaction orchestration, and financial service integrations.",
-    stack: ["Laravel", "Redis", "REST API", "Queue"],
-    accent: "from-amber-300 via-orange-400 to-rose-500",
-    metric: "Callback orchestration",
-    details: ["Callback", "Queue", "Retry"],
-    image:
-      "https://staticassetsdolooma.blob.core.windows.net/web/assets/images/home/developer_site.png",
-    href: "#",
-  },
-  {
-    index: "03",
-    category: "ENTERPRISE / ERP",
-    title: "SCHOOL & FOUNDATION SYSTEM",
-    description:
-      "An integrated operational platform covering student administration, billing, accounting, journals, reporting, and organization management.",
-    stack: ["Laravel", "Blade", "MySQL", "Bootstrap"],
-    accent: "from-violet-300 via-fuchsia-400 to-sky-400",
-    metric: "Operational ERP",
-    details: ["Billing", "Journal", "Admin"],
-    image:
-      "https://img.riba2534.cn/images/2026/05/06_dashboard.png",
-    href: "#",
-  },
-];
+import { selectedProjects } from "@/data/projects";
 
 const techTicker = [
   { label: "Next.js", slug: "nextdotjs" },
@@ -143,6 +101,9 @@ export default function HomePage() {
             <a data-nav="work" className="nav-link transition-opacity hover:opacity-50" href="#work">
               Work
             </a>
+            <Link className="nav-link transition-opacity hover:opacity-50" href="/projects">
+              Projects
+            </Link>
             <a data-nav="about" className="nav-link transition-opacity hover:opacity-50" href="#about">
               About
             </a>
@@ -369,136 +330,113 @@ export default function HomePage() {
 
       <section
         id="work"
-        className="section-wipe relative mx-auto max-w-[1600px] px-5 py-20 md:px-8 md:py-28 lg:px-12 lg:py-36"
+        className="section-wipe relative mx-auto max-w-[1600px] px-5 py-20 md:px-8 md:py-28 lg:px-12 lg:py-32"
       >
-        <div
-          aria-hidden="true"
-          className="absolute right-5 top-20 hidden h-40 w-40 border border-black/10 md:block"
-        />
-        <div
-          aria-hidden="true"
-          className="absolute right-16 top-32 hidden h-24 w-24 bg-emerald-300/20 md:block"
-        />
-
         <Reveal>
-          <div className="mb-14 flex items-end justify-between border-b border-black pb-5 md:mb-20">
-            <h2 className="text-4xl font-black uppercase tracking-normal md:text-6xl">
-              Selected Work
-            </h2>
+          <div className="mb-14 flex items-end justify-between gap-8 border-b border-black pb-5 md:mb-20">
+            <div>
+              <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-neutral-500">
+                01 / Selected Work
+              </p>
+              <h2 className="text-4xl font-black uppercase tracking-normal md:text-6xl">
+                Selected Work
+              </h2>
+            </div>
 
-            <span className="hidden text-xs font-medium uppercase tracking-[0.18em] md:block">
-              2023 — 2026
-            </span>
+            <Link
+              href="/projects"
+              className="hidden items-center gap-2 text-xs font-medium uppercase tracking-[0.18em] transition-opacity hover:opacity-50 md:flex"
+            >
+              All Projects
+              <ArrowTopRightOnSquareIcon className="size-4" />
+            </Link>
           </div>
         </Reveal>
 
-          <div className="space-y-28 lg:space-y-40">
-            {projects.map((project) => (
-              <article key={project.index} className="relative">
-                <div
-                  aria-hidden="true"
-                  className="sticky-project-index pointer-events-none absolute left-0 top-4 hidden text-[12rem] font-black leading-none text-black/[0.035] lg:block"
-                >
-                  {project.index}
-                </div>
+        <div className="space-y-14 md:space-y-20">
+          {selectedProjects.map((project, index) => {
+            const reverse = index % 2 === 1;
 
-                {/* Project heading */}
-                <Reveal>
-                  <div className="grid gap-6 md:grid-cols-[100px_minmax(0,1fr)] md:gap-10">
-                    <span className="sticky top-28 hidden text-xs font-semibold tracking-[0.18em] text-neutral-500 md:block">
-                      {project.index}
-                    </span>
-                    <span className="text-xs font-semibold tracking-[0.18em] text-neutral-500 md:hidden">
-                      {project.index}
-                    </span>
-
-                    <div>
-                      <p className="mb-4 text-xs font-medium uppercase tracking-[0.2em] text-neutral-500">
-                        {project.category}
-                      </p>
-
-                      <h3 className="max-w-5xl text-4xl font-black uppercase leading-[0.9] tracking-normal md:text-6xl lg:text-8xl">
-                        {project.title}
-                      </h3>
-                    </div>
-                  </div>
-                </Reveal>
-
-                {/* Project visual */}
-                <ScaleReveal className="mt-10 md:mt-14">
-                  <div className="project-preview spotlight-card group relative flex aspect-[16/9] w-full items-end overflow-hidden bg-neutral-950 p-5 text-white md:p-8">
+            return (
+              <article
+                key={project.index}
+                className="group relative grid gap-6 border-b border-black/20 pb-14 md:gap-8 md:pb-20 lg:grid-cols-[minmax(0,1.08fr)_minmax(360px,0.92fr)] lg:items-stretch"
+              >
+                <ScaleReveal className={reverse ? "lg:order-2" : ""}>
+                  <Link
+                    href={project.href}
+                    aria-label={`Open ${project.title}`}
+                    className="project-preview relative block aspect-[16/10] overflow-hidden bg-neutral-950"
+                  >
                     <div
-                      className="project-image absolute inset-0 bg-cover bg-center opacity-80 transition duration-700 group-hover:scale-[1.03] group-hover:opacity-100"
+                      className="project-image absolute inset-0 bg-cover bg-center opacity-90 transition duration-500 group-hover:scale-[1.02] group-hover:opacity-100"
                       style={
                         {
                           backgroundImage: `url("${project.image}")`,
                         } as CSSProperties
                       }
                     />
-                    <div className={`absolute inset-0 bg-gradient-to-br ${project.accent} opacity-20 transition-opacity duration-500 group-hover:opacity-0`} />
-                    <div className="absolute inset-0 bg-[linear-gradient(115deg,rgba(10,10,10,0.76),rgba(10,10,10,0.22)_52%,rgba(10,10,10,0.82))] transition-opacity duration-500 group-hover:opacity-0" />
-                    <div className="portfolio-grid absolute inset-0 opacity-[0.06] transition-opacity duration-500 group-hover:opacity-0" />
-
-                    <div className="relative z-10 flex w-full flex-col gap-10 transition-opacity duration-500 group-hover:opacity-0 md:flex-row md:items-end md:justify-between">
-                      <div>
-                        <p className="text-xs font-medium uppercase tracking-[0.25em] text-white/40">
-                          Project Preview
-                        </p>
-
-                        <p className="mt-3 max-w-5xl text-3xl font-black uppercase leading-[0.9] tracking-normal md:text-6xl lg:text-8xl">
-                          {project.title}
-                        </p>
-                      </div>
-
-                      <div className="max-w-xs border-t border-white/20 pt-4 md:border-t-0 md:pt-0">
-                        <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-white/35">
-                          {project.category}
-                        </p>
-                        <p className="mt-2 text-sm font-semibold uppercase tracking-[0.12em] text-white/75">
-                          {project.metric}
-                        </p>
-                        <div className="mt-5 flex flex-wrap gap-2">
-                          {project.stack.map((item) => (
-                            <span
-                              key={item}
-                              className="border border-white/15 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.16em] text-white/55"
-                            >
-                              {item}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
+                    <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(10,10,10,0.05),transparent_52%,rgba(10,10,10,0.34))] transition-opacity duration-500 group-hover:opacity-0" />
+                    <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-[10px] font-semibold uppercase tracking-[0.18em] text-white/60">
+                      <span>FIG. {project.index}</span>
+                      <span>{project.metric}</span>
                     </div>
-                  </div>
+                  </Link>
                 </ScaleReveal>
 
-                {/* Project information */}
-                <div className="mt-7 grid gap-8 border-b border-black/20 pb-12 md:grid-cols-[100px_minmax(0,1fr)_320px] md:gap-10 md:pb-16">
-                  <div />
+                <Reveal delay={0.08} className={reverse ? "lg:order-1" : ""}>
+                  <div className="flex h-full flex-col justify-between gap-10">
+                    <div>
+                      <div className="mb-7 flex items-start justify-between gap-6">
+                        <span className="text-xs font-semibold uppercase tracking-[0.18em] text-emerald-700/70">
+                          Project {project.index}
+                        </span>
+                        <ArrowTopRightOnSquareIcon className="size-4 shrink-0 text-neutral-400 transition duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-neutral-950" />
+                      </div>
 
-                  <p className="max-w-2xl text-lg leading-7 text-neutral-700 md:text-xl md:leading-8">
-                    {project.description}
-                  </p>
+                      <p className="text-xs font-semibold uppercase tracking-[0.2em] text-neutral-500">
+                        {project.category}
+                      </p>
 
-                  <div>
-                    <div className="mb-6 flex flex-wrap gap-x-4 gap-y-2 text-xs font-medium uppercase tracking-[0.12em] text-neutral-500">
-                      {project.stack.map((item) => (
-                        <span key={item}>{item}</span>
-                      ))}
+                      <h3 className="mt-5 max-w-4xl text-4xl font-black uppercase leading-[0.9] tracking-normal transition-transform duration-300 group-hover:translate-x-1 md:text-6xl">
+                        <Link href={project.href}>{project.title}</Link>
+                      </h3>
+
+                      <p className="mt-7 max-w-2xl text-lg leading-8 text-neutral-700">
+                        {project.description}
+                      </p>
                     </div>
 
-                    <a
-                      href={project.href}
-                      className="inline-flex items-center gap-2 border-b border-black pb-1 text-xs font-semibold uppercase tracking-[0.16em] transition-opacity hover:opacity-50"
-                    >
-                      Explore project
-                      <ArrowTopRightOnSquareIcon className="size-4" />
-                    </a>
+                    <div>
+                      <div className="mb-5 grid gap-3 text-[10px] font-semibold uppercase tracking-[0.15em] text-neutral-500">
+                        <div className="flex justify-between gap-6 border-t border-black/15 pt-3">
+                          <span>Role</span>
+                          <span className="text-right text-neutral-800">
+                            {project.role}
+                          </span>
+                        </div>
+                        <div className="flex justify-between gap-6 border-t border-black/15 pt-3">
+                          <span>Stack</span>
+                          <span className="text-right text-neutral-800">
+                            {project.stack.slice(0, 3).join(" / ")}
+                          </span>
+                        </div>
+                      </div>
+
+                      <Link
+                        href={project.href}
+                        className="inline-flex items-center gap-2 border-b border-black pb-1 text-xs font-semibold uppercase tracking-[0.16em] transition-opacity hover:opacity-50"
+                      >
+                        Explore project
+                        <ArrowTopRightOnSquareIcon className="size-4" />
+                      </Link>
+                    </div>
                   </div>
-                </div>
+                </Reveal>
               </article>
-            ))}
-          </div>
+            );
+          })}
+        </div>
       </section>
 
       <section className="section-wipe relative overflow-hidden bg-neutral-950 text-[#f3f0e9]">
@@ -508,7 +446,7 @@ export default function HomePage() {
           <div className="mb-16 flex items-end justify-between border-b border-white/30 pb-5">
             <div>
               <p className="mb-3 text-xs font-medium uppercase tracking-[0.2em] text-white/40">
-                Career
+                02 / Experience
               </p>
 
               <h2 className="text-4xl font-black uppercase tracking-normal md:text-6xl">
@@ -528,14 +466,12 @@ export default function HomePage() {
                 delay={index * 0.08}
               >
 
-                <article
-                  className="spotlight-card group grid gap-7 border-b border-white/15 py-10 md:grid-cols-[80px_180px_minmax(0,1fr)_360px] md:gap-10 md:py-12"
-                >
-                  <span className="text-xs font-medium tracking-[0.18em] text-white/30">
+                <article className="spotlight-card group grid gap-7 border-b border-white/15 py-10 transition-colors duration-300 hover:border-white/35 md:grid-cols-[80px_180px_minmax(0,1fr)_360px] md:gap-10 md:py-12">
+                  <span className="text-xs font-medium tracking-[0.18em] text-white/30 transition-colors duration-300 group-hover:text-emerald-300">
                     {String(index + 1).padStart(2, "0")}
                   </span>
 
-                  <p className="text-xs font-medium uppercase tracking-[0.16em] text-white/45">
+                  <p className="text-xs font-medium uppercase tracking-[0.16em] text-white/45 transition-colors duration-300 group-hover:text-white/70">
                     {item.period}
                   </p>
 
@@ -572,7 +508,7 @@ export default function HomePage() {
         <div className="grid gap-14 lg:grid-cols-[1fr_0.8fr_0.8fr] lg:gap-14">
           <div>
             <p className="mb-5 text-xs font-semibold uppercase tracking-[0.2em] text-neutral-500">
-              About
+              03 / About
             </p>
 
             <Reveal>
@@ -590,7 +526,7 @@ export default function HomePage() {
               <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(10,10,10,0.08),rgba(10,10,10,0.62))]" />
               <div className="portfolio-noise absolute inset-0 opacity-20" />
               <span className="absolute bottom-4 left-4 text-xs font-semibold uppercase tracking-[0.22em] text-white/55">
-                Profile Slot
+                FIG. 04 / Portrait
               </span>
               <span className="absolute right-4 top-4 grid size-10 place-items-center border border-white/20 text-[10px] font-semibold uppercase tracking-[0.12em] text-white/55">
                 MIS
@@ -678,7 +614,7 @@ export default function HomePage() {
       >
         <div className="mx-auto max-w-[1600px] px-5 py-20 md:px-8 md:py-28 lg:px-12 lg:py-36">
           <p className="mb-6 text-xs font-semibold uppercase tracking-[0.2em] text-neutral-500">
-            Contact
+            04 / Contact
           </p>
 
           <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_360px] lg:items-end">
@@ -761,12 +697,13 @@ export default function HomePage() {
           <div className="mt-24 flex flex-col gap-4 border-t border-black pt-5 text-xs font-medium uppercase tracking-[0.16em] text-neutral-500 sm:flex-row sm:items-center sm:justify-between">
             <span>© 2026 Muhamad Ilham Saputra</span>
 
-            <div className="flex gap-6">
+            <div className="flex flex-wrap gap-6">
               <a
                 href="#top"
-                className="transition-opacity hover:opacity-50"
+                className="inline-flex items-center gap-2 transition-opacity hover:opacity-50"
               >
                 Back to top
+                <ArrowUpIcon className="size-4" />
               </a>
 
               <span>Bogor, Indonesia</span>
