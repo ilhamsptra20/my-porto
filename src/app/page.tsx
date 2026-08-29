@@ -12,6 +12,7 @@ import {
   StaggerItem,
 } from "@/components/motion";
 import { MagneticLink } from "@/components/magnetic-link";
+import { ExperienceSection } from "@/components/experience-section";
 import { PortfolioChrome } from "@/components/portfolio-chrome";
 import { Preloader } from "@/components/preloader";
 import { selectedProjects } from "@/data/projects";
@@ -36,27 +37,6 @@ const capabilities = [
   "Responsibility",
   "Integration",
   "Product Thinking",
-];
-
-const experience = [
-  {
-    period: "2025 — NOW",
-    company: "PT SAKTI KINERJA KOLABORASI",
-    role: "Full Stack Developer",
-    focus: "Financial systems · Core banking · Enterprise applications",
-  },
-  {
-    period: "2025",
-    company: "PT BANGKIT MEMBANGUN NEGERI",
-    role: "Full Stack Developer",
-    focus: "Web applications · API development · Business systems",
-  },
-  {
-    period: "2023 — 2024",
-    company: "PT ANANTA BANGUN GRAHA",
-    role: "Data Collection & Programmer",
-    focus: "Document management · Telecom operations · Internal systems",
-  },
 ];
 
 export default function HomePage() {
@@ -439,67 +419,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="section-wipe relative overflow-hidden bg-neutral-950 text-[#f3f0e9]">
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_80%_10%,rgba(45,212,191,0.18),transparent_28%),radial-gradient(circle_at_20%_88%,rgba(251,146,60,0.12),transparent_26%)]" />
-        <div className="portfolio-grid pointer-events-none absolute inset-0 opacity-[0.09]" />
-        <div className="mx-auto max-w-[1600px] px-5 py-20 md:px-8 md:py-28 lg:px-12 lg:py-36">
-          <div className="mb-16 flex items-end justify-between border-b border-white/30 pb-5">
-            <div>
-              <p className="mb-3 text-xs font-medium uppercase tracking-[0.2em] text-white/40">
-                02 / Experience
-              </p>
-
-              <h2 className="text-4xl font-black uppercase tracking-normal md:text-6xl">
-                Experience
-              </h2>
-            </div>
-
-            <span className="hidden text-xs uppercase tracking-[0.18em] text-white/40 md:block">
-              2023 — Present
-            </span>
-          </div>
-
-          <div>
-            {experience.map((item, index) => (
-              <Reveal
-                key={`${item.company}-${item.period}`}
-                delay={index * 0.08}
-              >
-
-                <article className="spotlight-card group grid gap-7 border-b border-white/15 py-10 transition-colors duration-300 hover:border-white/35 md:grid-cols-[80px_180px_minmax(0,1fr)_360px] md:gap-10 md:py-12">
-                  <span className="text-xs font-medium tracking-[0.18em] text-white/30 transition-colors duration-300 group-hover:text-emerald-300">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-
-                  <p className="text-xs font-medium uppercase tracking-[0.16em] text-white/45 transition-colors duration-300 group-hover:text-white/70">
-                    {item.period}
-                  </p>
-
-                  <div>
-                    <h3 className="text-2xl font-bold uppercase leading-tight tracking-normal transition-transform duration-300 group-hover:translate-x-2 md:text-4xl">
-                      {item.company}
-                    </h3>
-
-                    <p className="mt-3 text-sm uppercase tracking-[0.12em] text-white/45">
-                      {item.role}
-                    </p>
-                  </div>
-
-                  <div className="flex items-start justify-between gap-6">
-                    <p className="max-w-sm leading-7 text-white/55">
-                      {item.focus}
-                    </p>
-
-                    <span className="hidden text-xl text-white/20 md:block">
-                      ↗
-                    </span>
-                  </div>
-                </article>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
+      <ExperienceSection />
 
       <section
         id="about"
