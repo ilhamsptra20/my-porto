@@ -14,6 +14,7 @@ import {
 import { MagneticLink } from "@/components/magnetic-link";
 import { ExperienceSection } from "@/components/experience-section";
 import { PortfolioChrome } from "@/components/portfolio-chrome";
+import { ProfileBackground } from "@/components/profile-background";
 import { Preloader } from "@/components/preloader";
 import { selectedProjects } from "@/data/projects";
 
@@ -526,6 +527,8 @@ export default function HomePage() {
             <span>Enterprise Applications</span>
           </div>
         </div>
+
+        <ProfileBackground />
       </section>
 
       <footer
