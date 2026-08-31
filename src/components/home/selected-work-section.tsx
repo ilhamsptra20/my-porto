@@ -2,6 +2,7 @@ import { ArrowTopRightOnSquareIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import type { CSSProperties } from "react";
 import { Reveal, ScaleReveal } from "@/components/motion";
+import { selectedWork } from "@/data/home";
 import { selectedProjects } from "@/data/projects";
 
 export function SelectedWorkSection() {
@@ -14,10 +15,10 @@ export function SelectedWorkSection() {
         <div className="mb-14 flex items-end justify-between gap-8 border-b border-black pb-5 md:mb-20">
           <div>
             <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-neutral-500">
-              01 / Selected Work
+              {selectedWork.eyebrow}
             </p>
             <h2 className="text-4xl font-black uppercase tracking-normal md:text-6xl">
-              Selected Work
+              {selectedWork.title}
             </h2>
           </div>
 
@@ -25,7 +26,7 @@ export function SelectedWorkSection() {
             href="/projects"
             className="hidden items-center gap-2 text-xs font-medium uppercase tracking-[0.18em] transition-opacity hover:opacity-50 md:flex"
           >
-            All Projects
+            {selectedWork.archiveLinkLabel}
             <ArrowTopRightOnSquareIcon className="size-4" />
           </Link>
         </div>
@@ -56,7 +57,9 @@ export function SelectedWorkSection() {
                   />
                   <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(10,10,10,0.05),transparent_52%,rgba(10,10,10,0.34))] transition-opacity duration-500 group-hover:opacity-0" />
                   <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-[10px] font-semibold uppercase tracking-[0.18em] text-white/60">
-                    <span>FIG. {project.index}</span>
+                    <span>
+                      {selectedWork.figurePrefix} {project.index}
+                    </span>
                     <span>{project.metric}</span>
                   </div>
                 </Link>
@@ -67,7 +70,7 @@ export function SelectedWorkSection() {
                   <div>
                     <div className="mb-7 flex items-start justify-between gap-6">
                       <span className="text-xs font-semibold uppercase tracking-[0.18em] text-emerald-700/70">
-                        Project {project.index}
+                        {selectedWork.projectPrefix} {project.index}
                       </span>
                       <ArrowTopRightOnSquareIcon className="size-4 shrink-0 text-neutral-400 transition duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-neutral-950" />
                     </div>
@@ -88,13 +91,13 @@ export function SelectedWorkSection() {
                   <div>
                     <div className="mb-5 grid gap-3 text-[10px] font-semibold uppercase tracking-[0.15em] text-neutral-500">
                       <div className="flex justify-between gap-6 border-t border-black/15 pt-3">
-                        <span>Role</span>
+                        <span>{selectedWork.roleLabel}</span>
                         <span className="text-right text-neutral-800">
                           {project.role}
                         </span>
                       </div>
                       <div className="flex justify-between gap-6 border-t border-black/15 pt-3">
-                        <span>Stack</span>
+                        <span>{selectedWork.stackLabel}</span>
                         <span className="text-right text-neutral-800">
                           {project.stack.slice(0, 3).join(" / ")}
                         </span>
@@ -105,7 +108,7 @@ export function SelectedWorkSection() {
                       href={project.href}
                       className="inline-flex items-center gap-2 border-b border-black pb-1 text-xs font-semibold uppercase tracking-[0.16em] transition-opacity hover:opacity-50"
                     >
-                      Explore project
+                      {selectedWork.ctaLabel}
                       <ArrowTopRightOnSquareIcon className="size-4" />
                     </Link>
                   </div>

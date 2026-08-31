@@ -14,6 +14,7 @@ import {
   ThreeColumnBlock,
 } from "@/components/project/case-study";
 import { getProjectBySlug, projects, type Project } from "@/data/projects";
+import { brand, projectDetail } from "@/data/site";
 
 type ProjectDetailPageProps = {
   params: Promise<{
@@ -35,12 +36,12 @@ export async function generateMetadata({
 
   if (!project) {
     return {
-      title: "Project Not Found",
+      title: projectDetail.notFoundTitle,
     };
   }
 
   return {
-    title: `${project.title} | Muhamad Ilham Saputra`,
+    title: `${project.title} | ${projectDetail.metadataTitleSuffix}`,
     description: project.description,
   };
 }
@@ -77,18 +78,21 @@ export default async function ProjectDetailPage({
             className="group flex items-center gap-3 text-sm font-semibold uppercase tracking-[0.18em]"
           >
             <span className="monogram-mark grid size-9 place-items-center border border-black bg-neutral-950 text-[11px] text-[#f3f0e9] transition-transform duration-300 group-hover:rotate-6">
-              MIS
+              {brand.monogram}
             </span>
-            Ilham Saputra
+            {brand.name}
           </Link>
 
           <nav className="flex items-center gap-5 text-xs font-medium uppercase tracking-[0.16em] md:gap-8">
-            <Link className="nav-link transition-opacity hover:opacity-50" href="/projects">
-              Projects
-            </Link>
-            <Link className="nav-link transition-opacity hover:opacity-50" href="/#contact">
-              Contact
-            </Link>
+            {projectDetail.nav.map((item) => (
+              <Link
+                key={item.label}
+                className="nav-link transition-opacity hover:opacity-50"
+                href={item.href}
+              >
+                {item.label}
+              </Link>
+            ))}
           </nav>
         </div>
       </header>
@@ -119,17 +123,17 @@ function ProjectExecution({
   const columns = [
     {
       number: "01",
-      heading: "Scope",
+      heading: projectDetail.executionColumns.scope,
       content: project.scope,
     },
     {
       number: "02",
-      heading: "Responsibility",
+      heading: projectDetail.executionColumns.responsibility,
       content: project.responsibilities,
     },
     {
       number: "03",
-      heading: "Highlights",
+      heading: projectDetail.executionColumns.highlights,
       content: project.highlights,
     },
   ];
@@ -138,17 +142,17 @@ function ProjectExecution({
     return (
       <>
         <StatementBlock
-          eyebrow="Project Focus"
+          eyebrow={projectDetail.statementEyebrow}
           statement={project.metric}
           meta={project.category}
         />
 
         <section className="mx-auto max-w-[1600px] px-5 pb-20 md:px-8 md:pb-28 lg:px-12">
           <SectionHeader
-            eyebrow="Execution"
-            title="Breakdown"
-            meta="Scope / Role / Result"
-            number="03 / 05"
+            eyebrow={projectDetail.executionEyebrow}
+            title={projectDetail.executionTitle}
+            meta={projectDetail.executionMeta}
+            number={projectDetail.executionNumber}
           />
           <ThreeColumnBlock columns={columns} />
         </section>
@@ -160,18 +164,22 @@ function ProjectExecution({
     return (
       <section className="mx-auto max-w-[1600px] px-5 pb-20 md:px-8 md:pb-28 lg:px-12">
         <SectionHeader
-          eyebrow="Execution"
-          title="Breakdown"
-          meta="Scope / Role / Result"
-          number="03 / 05"
+          eyebrow={projectDetail.executionEyebrow}
+          title={projectDetail.executionTitle}
+          meta={projectDetail.executionMeta}
+          number={projectDetail.executionNumber}
         />
         <ThreeColumnBlock columns={columns} />
 
         <div className="mt-16">
-          <SectionHeader eyebrow="System" title="Stack" number="04 / 05" />
+          <SectionHeader
+            eyebrow={projectDetail.systemEyebrow}
+            title={projectDetail.systemTitle}
+            number={projectDetail.systemNumber}
+          />
           <StatsBlock
             items={project.stack.map((item) => ({
-              label: "Stack",
+              label: projectDetail.stackLabel,
               value: item,
             }))}
           />
@@ -183,15 +191,19 @@ function ProjectExecution({
   return (
     <section className="mx-auto max-w-[1600px] px-5 pb-20 md:px-8 md:pb-28 lg:px-12">
       <SectionHeader
-        eyebrow="Execution"
-        title="Breakdown"
-        meta="Scope / Role / Result"
-        number="03 / 05"
+        eyebrow={projectDetail.executionEyebrow}
+        title={projectDetail.executionTitle}
+        meta={projectDetail.executionMeta}
+        number={projectDetail.executionNumber}
       />
       <ThreeColumnBlock columns={columns} />
 
       <div className="mt-16">
-        <SectionHeader eyebrow="Flow" title="Key Areas" number="04 / 05" />
+        <SectionHeader
+          eyebrow={projectDetail.flowEyebrow}
+          title={projectDetail.flowTitle}
+          number={projectDetail.flowNumber}
+        />
         <NumberedStrip items={project.details} />
       </div>
     </section>

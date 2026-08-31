@@ -3,7 +3,7 @@ import {
   ArrowUpIcon,
 } from "@heroicons/react/24/outline";
 import { Reveal } from "@/components/motion";
-import { contactLinks } from "@/data/home";
+import { contact, contactLinks, footer } from "@/data/home";
 
 export function ContactFooter() {
   return (
@@ -13,28 +13,29 @@ export function ContactFooter() {
     >
       <div className="mx-auto max-w-[1600px] px-5 py-20 md:px-8 md:py-28 lg:px-12 lg:py-36">
         <p className="mb-6 text-xs font-semibold uppercase tracking-[0.2em] text-neutral-500">
-          04 / Contact
+          {contact.eyebrow}
         </p>
 
         <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_360px] lg:items-end">
           <div>
             <Reveal>
               <h2 className="max-w-5xl text-5xl font-black uppercase leading-[0.88] tracking-normal md:text-7xl lg:text-8xl">
-                Let&apos;s build
-                <br />
-                something useful.
+                {contact.titleLines.map((line) => (
+                  <span key={line} className="block">
+                    {line}
+                  </span>
+                ))}
               </h2>
             </Reveal>
 
             <p className="mt-8 max-w-2xl text-lg leading-8 text-neutral-600 md:text-xl">
-              Open to conversations about software engineering, enterprise systems,
-              financial technology, and product development.
+              {contact.description}
             </p>
           </div>
 
           <div className="border-t border-black/20 pt-6 lg:border-t-0 lg:pt-0">
             <p className="mb-6 text-xs font-semibold uppercase tracking-[0.18em] text-neutral-400">
-              Find me
+              {contact.linksLabel}
             </p>
 
             <Reveal delay={0.15}>
@@ -60,18 +61,18 @@ export function ContactFooter() {
         </div>
 
         <div className="mt-24 flex flex-col gap-4 border-t border-black pt-5 text-xs font-medium uppercase tracking-[0.16em] text-neutral-500 sm:flex-row sm:items-center sm:justify-between">
-          <span>© 2026 Muhamad Ilham Saputra</span>
+          <span>{footer.copyright}</span>
 
           <div className="flex flex-wrap gap-6">
             <a
               href="#top"
               className="inline-flex items-center gap-2 transition-opacity hover:opacity-50"
             >
-              Back to top
+              {footer.backToTopLabel}
               <ArrowUpIcon className="size-4" />
             </a>
 
-            <span>Bogor, Indonesia</span>
+            <span>{footer.location}</span>
           </div>
         </div>
       </div>

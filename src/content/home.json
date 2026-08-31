@@ -1,0 +1,234 @@
+{
+  "brand": {
+    "name": "Ilham Saputra",
+    "monogram": "MIS"
+  },
+  "navigation": [
+    {
+      "label": "Work",
+      "href": "#work",
+      "section": "work"
+    },
+    {
+      "label": "Projects",
+      "href": "/projects"
+    },
+    {
+      "label": "About",
+      "href": "#about",
+      "section": "about"
+    },
+    {
+      "label": "Contact",
+      "href": "#contact",
+      "section": "contact"
+    }
+  ],
+  "hero": {
+    "eyebrow": ["Full Stack Software Engineer", "Indonesia"],
+    "name": ["Muhamad", "Ilham", "Saputra"],
+    "subtitle": "Building financial systems, enterprise applications, and maintainable software architecture.",
+    "primaryCta": {
+      "label": "View work",
+      "href": "#work"
+    },
+    "secondaryCta": {
+      "label": "Contact me",
+      "href": "#contact"
+    },
+    "consoleLabel": "systems.log",
+    "footerLabel": "Portfolio / 2026",
+    "footerLink": {
+      "label": "Selected Work",
+      "href": "#work"
+    }
+  },
+  "selectedWork": {
+    "eyebrow": "01 / Selected Work",
+    "title": "Selected Work",
+    "archiveLinkLabel": "All Projects",
+    "projectPrefix": "Project",
+    "figurePrefix": "FIG.",
+    "roleLabel": "Role",
+    "stackLabel": "Stack",
+    "ctaLabel": "Explore project"
+  },
+  "experienceSection": {
+    "eyebrow": "02 / Experience",
+    "title": "Experience",
+    "range": "2023 — Present",
+    "detailPrefix": "Detail",
+    "detailLabels": {
+      "responsibilities": "Responsibilities",
+      "projects": "Systems / Projects",
+      "technologies": "Technologies",
+      "contribution": "Contribution"
+    }
+  },
+  "about": {
+    "eyebrow": "03 / About",
+    "titleLines": ["I build systems,", "not just pages."],
+    "profileImage": "/images/profile-picture.jpeg",
+    "profileCaption": "FIG. 04 / Portrait",
+    "profileInitials": "MIS",
+    "intro": "I work across frontend, backend, APIs, databases, and application architecture to turn business processes into software that is clear, maintainable, and ready to scale.",
+    "body": "My focus is not only making features work, but understanding how data, workflows, integrations, and system boundaries fit together over the long term.",
+    "principles": [
+      {
+        "label": "01 / Product Engineering",
+        "description": "Translating real operational requirements into usable and maintainable application flows.",
+        "accentClass": "hover:bg-emerald-300/10"
+      },
+      {
+        "label": "02 / System Design",
+        "description": "Designing clear boundaries between frontend, backend, data, and integrations without unnecessary complexity.",
+        "accentClass": "hover:bg-orange-300/10"
+      },
+      {
+        "label": "03 / Maintainability",
+        "description": "Writing software that other developers can understand, extend, debug, and operate safely.",
+        "accentClass": "hover:bg-cyan-300/10"
+      }
+    ],
+    "coreCapabilitiesLabel": "Core capabilities",
+    "coreCapabilities": [
+      "Frontend Engineering",
+      "Backend Engineering",
+      "REST API Design",
+      "Database Design",
+      "System Architecture",
+      "Enterprise Applications"
+    ]
+  },
+  "contact": {
+    "eyebrow": "04 / Contact",
+    "titleLines": ["Let's build", "something useful."],
+    "description": "Open to conversations about software engineering, enterprise systems, financial technology, and product development.",
+    "linksLabel": "Find me"
+  },
+  "footer": {
+    "copyright": "© 2026 Muhamad Ilham Saputra",
+    "backToTopLabel": "Back to top",
+    "location": "Bogor, Indonesia"
+  },
+  "techTicker": [
+    {
+      "label": "Next.js",
+      "slug": "nextdotjs"
+    },
+    {
+      "label": "React",
+      "slug": "react"
+    },
+    {
+      "label": "Laravel",
+      "slug": "laravel"
+    },
+    {
+      "label": "PHP",
+      "slug": "php"
+    },
+    {
+      "label": "PostgreSQL",
+      "slug": "postgresql"
+    },
+    {
+      "label": "MySQL",
+      "slug": "mysql"
+    },
+    {
+      "label": "Redis",
+      "slug": "redis"
+    },
+    {
+      "label": "Tailwind CSS",
+      "slug": "tailwindcss"
+    },
+    {
+      "label": "Git",
+      "slug": "git"
+    },
+    {
+      "label": "GitHub",
+      "slug": "github"
+    }
+  ],
+  "capabilities": [
+    "Architecture",
+    "Engineering",
+    "Database",
+    "Responsibility",
+    "Integration",
+    "Product Thinking"
+  ],
+  "heroConsoleRows": [
+    [
+      "status",
+      "available_to_connect",
+      "text-emerald-300"
+    ],
+    [
+      "focus",
+      "financial_systems",
+      "text-cyan-300"
+    ],
+    [
+      "mode",
+      "build_maintain_scale",
+      "text-orange-300"
+    ]
+  ],
+  "heroStats": [
+    [
+      "Currently building",
+      "Financial systems"
+    ],
+    [
+      "Main stack",
+      "Next.js / Laravel"
+    ],
+    [
+      "Strength",
+      "Business logic & architecture"
+    ]
+  ],
+  "heroMeta": [
+    [
+      "Based in",
+      "Bogor"
+    ],
+    [
+      "Focus",
+      "Enterprise Systems"
+    ],
+    [
+      "Stack",
+      "Next.js / Laravel"
+    ],
+    [
+      "Status",
+      "Available to Connect"
+    ]
+  ],
+  "contactLinks": [
+    {
+      "label": "Email",
+      "href": "mailto:your@email.com"
+    },
+    {
+      "label": "Github",
+      "href": "https://github.com/ilhamsptra20",
+      "external": true
+    },
+    {
+      "label": "LinkedIn",
+      "href": "#",
+      "external": true
+    },
+    {
+      "label": "Resume / CV",
+      "href": "/cv.pdf",
+      "external": true
+    }
+  ]
+}

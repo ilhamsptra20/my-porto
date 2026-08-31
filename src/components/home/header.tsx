@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { brand, navigation } from "@/data/home";
 
 export function Header() {
   return (
@@ -10,39 +11,32 @@ export function Header() {
           className="group flex items-center gap-3 text-sm font-semibold uppercase tracking-[0.18em]"
         >
           <span className="monogram-mark grid size-9 place-items-center border border-black bg-neutral-950 text-[11px] text-[#f3f0e9] transition-transform duration-300 group-hover:rotate-6">
-            MIS
+            {brand.monogram}
           </span>
-          Ilham Saputra
+          {brand.name}
         </a>
 
         <nav className="flex items-center gap-5 text-xs font-medium uppercase tracking-[0.16em] md:gap-8">
-          <a
-            data-nav="work"
-            className="nav-link transition-opacity hover:opacity-50"
-            href="#work"
-          >
-            Work
-          </a>
-          <Link
-            className="nav-link transition-opacity hover:opacity-50"
-            href="/projects"
-          >
-            Projects
-          </Link>
-          <a
-            data-nav="about"
-            className="nav-link transition-opacity hover:opacity-50"
-            href="#about"
-          >
-            About
-          </a>
-          <a
-            data-nav="contact"
-            className="nav-link transition-opacity hover:opacity-50"
-            href="#contact"
-          >
-            Contact
-          </a>
+          {navigation.map((item) =>
+            item.href.startsWith("/") ? (
+              <Link
+                key={item.label}
+                className="nav-link transition-opacity hover:opacity-50"
+                href={item.href}
+              >
+                {item.label}
+              </Link>
+            ) : (
+              <a
+                key={item.label}
+                data-nav={item.section}
+                className="nav-link transition-opacity hover:opacity-50"
+                href={item.href}
+              >
+                {item.label}
+              </a>
+            ),
+          )}
         </nav>
       </div>
     </header>

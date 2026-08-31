@@ -7,6 +7,7 @@ import {
   type CarouselMediaItem,
 } from "@/components/project/media-carousel";
 import type { Project } from "@/data/projects";
+import { projectDetail } from "@/data/site";
 
 export type MediaItem = CarouselMediaItem & {
   src: string;
@@ -40,13 +41,13 @@ export function ProjectHero({ project }: { project: Project }) {
         className="mb-10 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-neutral-500 transition-opacity hover:opacity-50 md:mb-12"
       >
         <ArrowLeftIcon className="size-4" />
-        Back to projects
+        {projectDetail.backLabel}
       </Link>
 
       <Reveal>
         <div className="max-w-6xl">
           <p className="mb-6 text-xs font-semibold uppercase tracking-[0.22em] text-neutral-500">
-            Case Study / {project.index}
+            {projectDetail.heroEyebrowPrefix} / {project.index}
           </p>
 
           <Stagger>
@@ -64,9 +65,9 @@ export function ProjectHero({ project }: { project: Project }) {
       <ProjectMeta
         className="mt-9 md:mt-10"
         items={[
-          { label: "Category", value: project.category },
-          { label: "Role", value: project.role },
-          { label: "Focus", value: project.metric },
+          { label: projectDetail.metaLabels.category, value: project.category },
+          { label: projectDetail.metaLabels.role, value: project.role },
+          { label: projectDetail.metaLabels.focus, value: project.metric },
         ]}
       />
     </section>
@@ -258,7 +259,7 @@ export function ProjectOverview({ project }: { project: Project }) {
         <Reveal>
           <article>
             <p className="mb-5 text-xs font-semibold uppercase tracking-[0.2em] text-neutral-500">
-              Project Context
+              {projectDetail.overviewEyebrow}
             </p>
             <p className="max-w-3xl text-2xl leading-9 text-neutral-700 md:text-3xl md:leading-10">
               {project.overview}
@@ -279,7 +280,7 @@ export function ProjectOverview({ project }: { project: Project }) {
         <Reveal delay={0.08}>
           <article className="bg-neutral-950 p-6 text-[#f3f0e9] md:p-8 lg:p-10">
             <p className="mb-5 text-xs font-semibold uppercase tracking-[0.2em] text-white/40">
-              My Role
+              {projectDetail.roleEyebrow}
             </p>
             <h2 className="text-3xl font-black uppercase leading-[0.92] tracking-normal md:text-5xl">
               {project.role}
@@ -474,7 +475,7 @@ function ProjectNavigationLink({
     >
       <div className="flex items-center justify-between gap-6">
         <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/40 transition-colors group-hover:text-neutral-500">
-          {isPrevious ? "Previous Project" : "Next Project"}
+          {isPrevious ? projectDetail.previousLabel : projectDetail.nextLabel}
         </p>
         {isPrevious ? (
           <ArrowLeftIcon className="size-5 transition-transform duration-300 group-hover:-translate-x-1" />

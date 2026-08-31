@@ -1,62 +1,135 @@
-export const techTicker = [
-  { label: "Next.js", slug: "nextdotjs" },
-  { label: "React", slug: "react" },
-  { label: "Laravel", slug: "laravel" },
-  { label: "PHP", slug: "php" },
-  { label: "PostgreSQL", slug: "postgresql" },
-  { label: "MySQL", slug: "mysql" },
-  { label: "Redis", slug: "redis" },
-  { label: "Tailwind CSS", slug: "tailwindcss" },
-  { label: "Git", slug: "git" },
-  { label: "GitHub", slug: "github" },
-];
+import homeContent from "@/content/home.json";
 
-export const capabilities = [
-  "Architecture",
-  "Engineering",
-  "Database",
-  "Responsibility",
-  "Integration",
-  "Product Thinking",
-];
+export type Brand = {
+  name: string;
+  monogram: string;
+};
 
-export const heroConsoleRows = [
-  ["status", "available_to_connect", "text-emerald-300"],
-  ["focus", "financial_systems", "text-cyan-300"],
-  ["mode", "build_maintain_scale", "text-orange-300"],
-];
+export type NavigationItem = {
+  label: string;
+  href: string;
+  section?: string;
+};
 
-export const heroStats = [
-  ["Currently building", "Financial systems"],
-  ["Main stack", "Next.js / Laravel"],
-  ["Strength", "Business logic & architecture"],
-];
+export type LinkItem = {
+  label: string;
+  href: string;
+};
 
-export const heroMeta = [
-  ["Based in", "Bogor"],
-  ["Focus", "Enterprise Systems"],
-  ["Stack", "Next.js / Laravel"],
-  ["Status", "Available to Connect"],
-];
+export type HeroContent = {
+  eyebrow: string[];
+  name: string[];
+  subtitle: string;
+  primaryCta: LinkItem;
+  secondaryCta: LinkItem;
+  consoleLabel: string;
+  footerLabel: string;
+  footerLink: LinkItem;
+};
 
-export const contactLinks = [
-  {
-    label: "Email",
-    href: "mailto:your@email.com",
-  },
-  {
-    label: "Github",
-    href: "https://github.com/ilhamsptra20",
-    external: true,
-  },
-  {
-    label: "LinkedIn",
-    href: "#",
-    external: true,
-  },
-  {
-    label: "Resume / CV",
-    href: "/cv.pdf",
-    external: true,
-  },
-];
+export type SelectedWorkContent = {
+  eyebrow: string;
+  title: string;
+  archiveLinkLabel: string;
+  projectPrefix: string;
+  figurePrefix: string;
+  roleLabel: string;
+  stackLabel: string;
+  ctaLabel: string;
+};
+
+export type ExperienceSectionContent = {
+  eyebrow: string;
+  title: string;
+  range: string;
+  detailPrefix: string;
+  detailLabels: {
+    responsibilities: string;
+    projects: string;
+    technologies: string;
+    contribution: string;
+  };
+};
+
+export type AboutPrinciple = {
+  label: string;
+  description: string;
+  accentClass: string;
+};
+
+export type AboutContent = {
+  eyebrow: string;
+  titleLines: string[];
+  profileImage: string;
+  profileCaption: string;
+  profileInitials: string;
+  intro: string;
+  body: string;
+  principles: AboutPrinciple[];
+  coreCapabilitiesLabel: string;
+  coreCapabilities: string[];
+};
+
+export type ContactContent = {
+  eyebrow: string;
+  titleLines: string[];
+  description: string;
+  linksLabel: string;
+};
+
+export type FooterContent = {
+  copyright: string;
+  backToTopLabel: string;
+  location: string;
+};
+
+export type TechTickerItem = {
+  label: string;
+  slug: string;
+};
+
+export type HeroConsoleRow = [label: string, value: string, colorClass: string];
+
+export type LabelValueItem = [label: string, value: string];
+
+export type ContactLink = {
+  label: string;
+  href: string;
+  external?: boolean;
+};
+
+type HomeContent = {
+  brand: Brand;
+  navigation: NavigationItem[];
+  hero: HeroContent;
+  selectedWork: SelectedWorkContent;
+  experienceSection: ExperienceSectionContent;
+  about: AboutContent;
+  contact: ContactContent;
+  footer: FooterContent;
+  techTicker: TechTickerItem[];
+  capabilities: string[];
+  heroConsoleRows: HeroConsoleRow[];
+  heroStats: LabelValueItem[];
+  heroMeta: LabelValueItem[];
+  contactLinks: ContactLink[];
+};
+
+const content = homeContent as HomeContent;
+
+export const {
+  brand,
+  navigation,
+  hero,
+  selectedWork,
+  experienceSection,
+  about,
+  contact,
+  footer,
+  techTicker,
+  capabilities,
+  heroConsoleRows,
+  heroStats,
+  heroMeta,
+  contactLinks,
+} = content;

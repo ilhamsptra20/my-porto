@@ -4,6 +4,7 @@ import { useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { Reveal } from "@/components/motion";
 import { experience, type ExperienceDetail } from "@/data/experience";
+import { experienceSection } from "@/data/home";
 import { TechnologyIcon } from "@/components/technology/technology-icon";
 
 function DetailTextBlock({
@@ -31,15 +32,17 @@ function DetailTextBlock({
 }
 
 function TechnologiesBlock({
+  label,
   technologies,
 }: {
+  label: string;
   technologies: ExperienceDetail["technologies"];
 }) {
   return (
     <div className="border-t border-white/20 pt-4">
       <div className="flex items-center justify-between gap-6">
         <h4 className="text-[10px] font-semibold uppercase tracking-[0.2em] text-white/35">
-          Technologies
+          {label}
         </h4>
 
         <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-white/30">
@@ -70,12 +73,21 @@ function ExperienceDetailGrid({ details }: { details: ExperienceDetail }) {
   return (
     <div className="grid gap-x-12 gap-y-10 md:grid-cols-2">
       <DetailTextBlock
-        label="Responsibilities"
+        label={experienceSection.detailLabels.responsibilities}
         items={details.responsibilities}
       />
-      <DetailTextBlock label="Systems / Projects" items={details.projects} />
-      <TechnologiesBlock technologies={details.technologies} />
-      <DetailTextBlock label="Contribution" items={details.contributions} />
+      <DetailTextBlock
+        label={experienceSection.detailLabels.projects}
+        items={details.projects}
+      />
+      <TechnologiesBlock
+        label={experienceSection.detailLabels.technologies}
+        technologies={details.technologies}
+      />
+      <DetailTextBlock
+        label={experienceSection.detailLabels.contribution}
+        items={details.contributions}
+      />
     </div>
   );
 }
@@ -91,16 +103,16 @@ export function ExperienceSection() {
         <div className="mb-16 flex items-end justify-between border-b border-white/30 pb-5">
           <div>
             <p className="mb-3 text-xs font-medium uppercase tracking-[0.2em] text-white/40">
-              02 / Experience
+              {experienceSection.eyebrow}
             </p>
 
             <h2 className="text-4xl font-black uppercase tracking-normal md:text-6xl">
-              Experience
+              {experienceSection.title}
             </h2>
           </div>
 
           <span className="hidden text-xs uppercase tracking-[0.18em] text-white/40 md:block">
-            2023 — Present
+            {experienceSection.range}
           </span>
         </div>
 
@@ -172,7 +184,7 @@ export function ExperienceSection() {
 
                           <div className="md:col-span-3">
                             <p className="mb-9 text-[10px] font-semibold uppercase tracking-[0.22em] text-emerald-300/70">
-                              Detail / {itemNumber}
+                              {experienceSection.detailPrefix} / {itemNumber}
                             </p>
 
                             <ExperienceDetailGrid details={item.details} />

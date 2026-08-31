@@ -3,6 +3,7 @@ import Link from "next/link";
 import type { CSSProperties } from "react";
 import { Reveal } from "@/components/motion";
 import type { Project } from "@/data/projects";
+import { projectsArchive } from "@/data/site";
 
 type ArchiveLayout = Project["archiveLayout"];
 
@@ -56,7 +57,7 @@ function FeaturedProjectArchiveItem({ project }: { project: Project }) {
     <article className="group grid overflow-hidden border border-black bg-[#f3f0e9] shadow-[10px_10px_0_rgba(10,10,10,0.07)] transition duration-300 hover:-translate-y-1 hover:shadow-[14px_14px_0_rgba(10,10,10,0.1)] lg:grid-cols-[1.18fr_0.82fr]">
       <ProjectArchiveMedia
         project={project}
-        label={`${project.index} / Featured Project`}
+        label={`${project.index} / ${projectsArchive.itemLabels.featured}`}
         className="min-h-[340px] md:min-h-[520px]"
       />
       <ProjectArchiveInfo
@@ -78,7 +79,7 @@ function SplitProjectArchiveItem({ project }: { project: Project }) {
       />
       <ProjectArchiveMedia
         project={project}
-        label={`${project.index} / Split`}
+        label={`${project.index} / ${projectsArchive.itemLabels.split}`}
         className="min-h-[300px] border-t border-black md:border-l md:border-t-0"
       />
     </article>
@@ -95,7 +96,7 @@ function LandscapeProjectArchiveItem({ project }: { project: Project }) {
       />
       <ProjectArchiveMedia
         project={project}
-        label={`${project.index} / Landscape`}
+        label={`${project.index} / ${projectsArchive.itemLabels.landscape}`}
         className="min-h-[340px] border-t border-black lg:border-l lg:border-t-0"
       />
     </article>
@@ -112,7 +113,7 @@ function PortraitProjectArchiveItem({ project }: { project: Project }) {
       />
       <ProjectArchiveMedia
         project={project}
-        label={`${project.index} / Portrait`}
+        label={`${project.index} / ${projectsArchive.itemLabels.portrait}`}
         className="min-h-[300px] flex-1 border-t border-black"
       />
     </article>
@@ -156,11 +157,11 @@ function ProjectArchiveInfo({
       <div>
         <div className="mb-5 grid gap-3 text-[10px] font-semibold uppercase tracking-[0.15em] text-neutral-500">
           <div className="flex justify-between gap-6 border-t border-black/15 pt-3">
-            <span>Role</span>
+            <span>{projectsArchive.itemLabels.role}</span>
             <span className="text-right text-neutral-800">{project.role}</span>
           </div>
           <div className="flex justify-between gap-6 border-t border-black/15 pt-3">
-            <span>Focus</span>
+            <span>{projectsArchive.itemLabels.focus}</span>
             <span className="text-right text-neutral-800">{project.metric}</span>
           </div>
         </div>
@@ -180,7 +181,7 @@ function ProjectArchiveInfo({
           href={project.href}
           className="mt-7 inline-flex items-center gap-2 border-b border-black pb-1 text-xs font-semibold uppercase tracking-[0.16em] transition-opacity hover:opacity-50"
         >
-          View case study
+          {projectsArchive.itemLabels.viewCaseStudy}
           <ArrowTopRightOnSquareIcon className="size-4" />
         </Link>
       </div>

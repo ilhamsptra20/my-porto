@@ -1,7 +1,7 @@
 import { ArrowDownIcon } from "@heroicons/react/24/outline";
 import { MagneticLink } from "@/components/magnetic-link";
 import { Reveal, ScaleReveal, Stagger, StaggerItem } from "@/components/motion";
-import { heroConsoleRows, heroMeta, heroStats } from "@/data/home";
+import { hero, heroConsoleRows, heroMeta, heroStats } from "@/data/home";
 
 export function HeroSection() {
   return (
@@ -34,24 +34,23 @@ export function HeroSection() {
         <div className="relative z-10">
           <div className="absolute -left-3 top-2 hidden h-24 w-1 bg-gradient-to-b from-emerald-500 via-cyan-500 to-transparent md:block" />
           <div className="mb-7 flex flex-wrap items-center gap-x-4 gap-y-2 text-xs font-medium uppercase tracking-[0.18em] text-neutral-500">
-            <span>Full Stack Software Engineer</span>
-            <span className="hidden sm:inline">/</span>
-            <span>Indonesia</span>
+            {hero.eyebrow.map((item, index) => (
+              <span key={item} className="contents">
+                {index > 0 ? <span className="hidden sm:inline">/</span> : null}
+                <span>{item}</span>
+              </span>
+            ))}
           </div>
 
           <Stagger className="max-w-[1200px]">
             <h1 className="text-[15vw] font-black uppercase leading-[0.78] tracking-normal sm:text-[13vw] lg:text-[9vw]">
-              <StaggerItem>
-                <span className="block">Muhamad</span>
-              </StaggerItem>
-
-              <StaggerItem>
-                <span className="hero-accent block">Ilham</span>
-              </StaggerItem>
-
-              <StaggerItem>
-                <span className="block">Saputra</span>
-              </StaggerItem>
+              {hero.name.map((item, index) => (
+                <StaggerItem key={`${item}-${index}`}>
+                  <span className={index === 1 ? "hero-accent block" : "block"}>
+                    {item}
+                  </span>
+                </StaggerItem>
+              ))}
             </h1>
           </Stagger>
         </div>
@@ -60,25 +59,24 @@ export function HeroSection() {
           <div>
             <Reveal delay={0.35}>
               <p className="text-xl leading-8 text-neutral-700 md:text-2xl md:leading-9">
-                Building financial systems, enterprise applications, and maintainable
-                software architecture.
+                {hero.subtitle}
               </p>
             </Reveal>
             <Reveal delay={0.45}>
               <div className="mt-8 flex flex-wrap gap-3">
                 <MagneticLink
-                  href="#work"
+                  href={hero.primaryCta.href}
                   className="spotlight-card magnetic-link inline-flex items-center gap-2 border border-black bg-black px-5 py-3 text-xs font-semibold uppercase tracking-[0.15em] text-white transition-colors hover:bg-transparent hover:text-black"
                 >
-                  View work
+                  {hero.primaryCta.label}
                   <ArrowDownIcon className="size-4" />
                 </MagneticLink>
 
                 <MagneticLink
-                  href="#contact"
+                  href={hero.secondaryCta.href}
                   className="spotlight-card magnetic-link inline-flex items-center gap-2 border border-black px-5 py-3 text-xs font-semibold uppercase tracking-[0.15em] transition-colors hover:bg-black hover:text-white"
                 >
-                  Contact me
+                  {hero.secondaryCta.label}
                 </MagneticLink>
               </div>
             </Reveal>
@@ -93,7 +91,7 @@ export function HeroSection() {
                   <span className="size-2.5 bg-emerald-400" />
                 </div>
                 <span className="text-[10px] font-semibold uppercase tracking-[0.22em] text-white/35">
-                  systems.log
+                  {hero.consoleLabel}
                 </span>
               </div>
 
@@ -136,13 +134,13 @@ export function HeroSection() {
       </div>
 
       <div className="mt-14 flex items-end justify-between border-t border-black/20 pt-5 text-xs font-medium uppercase tracking-[0.18em]">
-        <span>Portfolio / 2026</span>
+        <span>{hero.footerLabel}</span>
 
         <a
-          href="#work"
+          href={hero.footerLink.href}
           className="flex items-center gap-2 transition-opacity hover:opacity-50"
         >
-          Selected Work
+          {hero.footerLink.label}
           <ArrowDownIcon className="size-4" />
         </a>
       </div>

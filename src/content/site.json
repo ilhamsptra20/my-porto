@@ -1,0 +1,76 @@
+{
+  "brand": {
+    "name": "Ilham Saputra",
+    "monogram": "MIS"
+  },
+  "projectsArchive": {
+    "nav": [
+      {
+        "label": "Home",
+        "href": "/"
+      },
+      {
+        "label": "Contact",
+        "href": "/#contact"
+      }
+    ],
+    "backLabel": "Back home",
+    "eyebrow": "Project Archive / 2026",
+    "titleLines": ["All", "Projects"],
+    "description": "Collection of production work across financial systems, payment infrastructure, enterprise operations, and internal business applications.",
+    "countSuffix": "Featured Projects",
+    "footerCountSuffix": "Projects",
+    "backToTopLabel": "Back to top",
+    "itemLabels": {
+      "featured": "Featured Project",
+      "split": "Split",
+      "landscape": "Landscape",
+      "portrait": "Portrait",
+      "role": "Role",
+      "focus": "Focus",
+      "viewCaseStudy": "View case study"
+    }
+  },
+  "projectDetail": {
+    "notFoundTitle": "Project Not Found",
+    "metadataTitleSuffix": "Muhamad Ilham Saputra",
+    "backLabel": "Back to projects",
+    "heroEyebrowPrefix": "Case Study",
+    "metaLabels": {
+      "category": "Category",
+      "role": "Role",
+      "focus": "Focus"
+    },
+    "overviewEyebrow": "Project Context",
+    "roleEyebrow": "My Role",
+    "previousLabel": "Previous Project",
+    "nextLabel": "Next Project",
+    "nav": [
+      {
+        "label": "Projects",
+        "href": "/projects"
+      },
+      {
+        "label": "Contact",
+        "href": "/#contact"
+      }
+    ],
+    "executionColumns": {
+      "scope": "Scope",
+      "responsibility": "Responsibility",
+      "highlights": "Highlights"
+    },
+    "statementEyebrow": "Project Focus",
+    "executionEyebrow": "Execution",
+    "executionTitle": "Breakdown",
+    "executionMeta": "Scope / Role / Result",
+    "executionNumber": "03 / 05",
+    "systemEyebrow": "System",
+    "systemTitle": "Stack",
+    "systemNumber": "04 / 05",
+    "stackLabel": "Stack",
+    "flowEyebrow": "Flow",
+    "flowTitle": "Key Areas",
+    "flowNumber": "04 / 05"
+  }
+}

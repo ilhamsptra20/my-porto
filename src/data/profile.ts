@@ -1,9 +1,11 @@
+import profileContent from "@/content/profile.json";
+
 export type Education = {
   institution: string;
   program: string;
+  period?: string;
   startYear?: string;
   endYear?: string;
-  period?: string;
   location?: string;
   gpa?: string;
 };
@@ -11,50 +13,29 @@ export type Education = {
 export type Credential = {
   title: string;
   provider: string;
-  year?: string;
+  year: string;
   credentialUrl?: string;
   credentialId?: string;
-  featured?: boolean;
+  featured: boolean;
 };
 
-export const education: Education[] = [
-  {
-    institution: "Nusa Mandiri University",
-    program: "Informatics Engineering",
-    period: "2020 — 2024",
-    location: "Jakarta / Indonesia",
-  },
-];
+export type ProfileSectionContent = {
+  label: string;
+  educationHeading: string;
+  credentialsHeading: string;
+  credentialIdLabel: string;
+  gpaLabel: string;
+};
 
-export const credentials: Credential[] = [
-  {
-    title: "Backend Development",
-    provider: "Dicoding",
-    year: "2025",
-    credentialUrl: "https://example.com/credentials/backend-development",
-    featured: true,
-  },
-  {
-    title: "Cloud Practitioner Essentials",
-    provider: "AWS Training",
-    year: "2025",
-    credentialUrl: "https://example.com/credentials/cloud-practitioner",
-    featured: true,
-  },
-  {
-    title: "Database Design Fundamentals",
-    provider: "Coursera",
-    year: "2024",
-    credentialUrl: "https://example.com/credentials/database-design",
-    featured: true,
-  },
-  {
-    title: "Intro to Programming",
-    provider: "Online Course",
-    year: "2023",
-    featured: false,
-  },
-];
+type ProfileContent = {
+  section: ProfileSectionContent;
+  education: Education[];
+  credentials: Credential[];
+};
+
+const content = profileContent as ProfileContent;
+
+export const { section: profileSection, education, credentials } = content;
 
 export const featuredCredentials = credentials.filter(
   (credential) => credential.featured,

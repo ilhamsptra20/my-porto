@@ -3,6 +3,7 @@ import { Reveal } from "@/components/motion";
 import {
   education,
   featuredCredentials,
+  profileSection,
   type Credential,
   type Education,
 } from "@/data/profile";
@@ -24,7 +25,7 @@ function EducationList({ items }: { items: Education[] }) {
     <div>
       <div className="mb-5 border-b border-black/25 pb-3">
         <h3 className="text-xs font-semibold uppercase tracking-[0.2em] text-neutral-500">
-          Education
+          {profileSection.educationHeading}
         </h3>
       </div>
 
@@ -44,7 +45,7 @@ function EducationList({ items }: { items: Education[] }) {
                 <p>{formatEducationPeriod(item)}</p>
               ) : null}
               {item.location ? <p>{item.location}</p> : null}
-              {item.gpa ? <p>GPA / {item.gpa}</p> : null}
+              {item.gpa ? <p>{profileSection.gpaLabel} / {item.gpa}</p> : null}
             </div>
           </article>
         ))}
@@ -58,7 +59,7 @@ function CredentialList({ items }: { items: Credential[] }) {
     <div>
       <div className="mb-3 border-b border-black/25 pb-3">
         <h3 className="text-xs font-semibold uppercase tracking-[0.2em] text-neutral-500">
-          Selected Credentials
+          {profileSection.credentialsHeading}
         </h3>
       </div>
 
@@ -94,7 +95,7 @@ function CredentialList({ items }: { items: Credential[] }) {
 
             {item.credentialId ? (
               <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.16em] text-neutral-400">
-                ID / {item.credentialId}
+                {profileSection.credentialIdLabel} / {item.credentialId}
               </p>
             ) : null}
           </article>
@@ -113,7 +114,7 @@ export function ProfileBackground() {
     <Reveal>
       <div className="mt-14 border-t border-black pt-5">
         <p className="mb-8 text-xs font-semibold uppercase tracking-[0.2em] text-neutral-500">
-          Background
+          {profileSection.label}
         </p>
 
         <div className="grid gap-10 md:grid-cols-[0.86fr_1.14fr] md:gap-12">
