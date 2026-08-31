@@ -253,6 +253,21 @@ export function MediaCaption({
 }
 
 export function ProjectOverview({ project }: { project: Project }) {
+  const contextItems = [
+    {
+      label: projectDetail.overviewMetaLabels.problem,
+      value: project.problem,
+    },
+    {
+      label: projectDetail.overviewMetaLabels.impact,
+      value: project.impact,
+    },
+    {
+      label: projectDetail.overviewMetaLabels.constraint,
+      value: project.constraint,
+    },
+  ];
+
   return (
     <section className="section-wipe mx-auto max-w-[1600px] px-5 pb-16 pt-12 md:px-8 md:pb-24 md:pt-16 lg:px-12 lg:pt-20">
       <div className="grid gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-start lg:gap-20">
@@ -291,6 +306,26 @@ export function ProjectOverview({ project }: { project: Project }) {
           </article>
         </Reveal>
       </div>
+
+      <Reveal delay={0.12}>
+        <div className="mt-12 grid border-y border-black/15 md:grid-cols-3">
+          {contextItems.map((item, index) => (
+            <article
+              key={item.label}
+              className={`py-7 md:px-7 ${
+                index > 0 ? "border-t border-black/15 md:border-l md:border-t-0" : ""
+              }`}
+            >
+              <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-neutral-400">
+                {String(index + 1).padStart(2, "0")} / {item.label}
+              </p>
+              <p className="mt-5 max-w-xl text-base leading-7 text-neutral-700">
+                {item.value}
+              </p>
+            </article>
+          ))}
+        </div>
+      </Reveal>
     </section>
   );
 }

@@ -3,6 +3,38 @@
     "name": "Ilham Saputra",
     "monogram": "MIS"
   },
+  "seo": {
+    "siteUrl": "http://localhost:3000",
+    "title": {
+      "default": "Muhamad Ilham Saputra - Software Engineer",
+      "template": "%s | Muhamad Ilham Saputra"
+    },
+    "description": "Full Stack Software Engineer building financial systems, enterprise applications, payment infrastructure, APIs, databases, and maintainable software architecture.",
+    "keywords": [
+      "Muhamad Ilham Saputra",
+      "Full Stack Developer",
+      "Software Engineer",
+      "Next.js Developer",
+      "Laravel Developer",
+      "Financial Systems",
+      "Enterprise Applications",
+      "API Integration"
+    ],
+    "creator": "Muhamad Ilham Saputra",
+    "openGraph": {
+      "title": "Muhamad Ilham Saputra - Software Engineer",
+      "description": "Portfolio of production work across financial systems, enterprise applications, payment infrastructure, and operational software.",
+      "url": "/",
+      "siteName": "Muhamad Ilham Saputra Portfolio",
+      "image": "/opengraph-image",
+      "imageAlt": "Muhamad Ilham Saputra portfolio preview"
+    },
+    "twitter": {
+      "card": "summary_large_image",
+      "title": "Muhamad Ilham Saputra - Software Engineer",
+      "description": "Full Stack Software Engineer building maintainable financial and enterprise software."
+    }
+  },
   "projectsArchive": {
     "nav": [
       {
@@ -42,6 +74,11 @@
       "focus": "Focus"
     },
     "overviewEyebrow": "Project Context",
+    "overviewMetaLabels": {
+      "problem": "Problem",
+      "impact": "Impact",
+      "constraint": "Constraint"
+    },
     "roleEyebrow": "My Role",
     "previousLabel": "Previous Project",
     "nextLabel": "Next Project",

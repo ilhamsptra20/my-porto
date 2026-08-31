@@ -8,6 +8,9 @@
     "title": "SAKTI COREBANKING V2",
     "description": "A modern core banking platform designed for multi-cooperative financial operations with scalable frontend and backend architecture.",
     "overview": "Core banking platform for cooperative financial operations, built around member data, account flow, role-based access, reporting, and operational modules that need to stay maintainable as the product grows.",
+    "problem": "Cooperative financial operations need clear member, account, ledger, permission, and reporting flows without scattering data across tools.",
+    "impact": "Creates a more maintainable operating surface for daily financial activity, reporting, and role-based work.",
+    "constraint": "Financial data flow must stay traceable, permission-aware, and consistent across transaction-heavy modules.",
     "role": "Full Stack Developer",
     "roleDescription": "Worked across frontend, backend, database structure, API flow, and implementation details for financial operation modules.",
     "stack": [
@@ -74,6 +77,9 @@
     "title": "PAYMENT GATEWAY MIDDLEWARE",
     "description": "Middleware for handling payment processing, callbacks, transaction orchestration, and financial service integrations.",
     "overview": "Payment middleware layer focused on connecting external payment services with internal systems through callbacks, transaction status handling, queues, and retry-aware processing.",
+    "problem": "Payment status, callbacks, retries, and external provider responses need to stay synchronized with internal transaction records.",
+    "impact": "Improves operational visibility for payment processing, callback handling, and retry-aware transaction support.",
+    "constraint": "Integration behavior must handle asynchronous callbacks, duplicate events, failed retries, and provider-specific response formats.",
     "role": "Full Stack Developer",
     "roleDescription": "Built and maintained backend-heavy payment integration flow, including API contracts, callback handling, and operational visibility.",
     "stack": [
@@ -140,6 +146,9 @@
     "title": "SCHOOL & FOUNDATION SYSTEM",
     "description": "An integrated operational platform covering student administration, billing, accounting, journals, reporting, and organization management.",
     "overview": "Enterprise-style system for school and foundation operations, covering administration, billing, accounting records, journals, organization data, and reporting workflows.",
+    "problem": "School and foundation operations need administration, billing, accounting, journals, and reports in one structured workflow.",
+    "impact": "Reduces fragmented admin work and gives teams clearer visibility across billing, accounting, and organization data.",
+    "constraint": "Modules must stay understandable while supporting many operational roles, record types, and financial reporting needs.",
     "role": "Full Stack Developer",
     "roleDescription": "Handled end-to-end application work across business process mapping, backend logic, database structure, and interface implementation.",
     "stack": [
@@ -206,6 +215,9 @@
     "title": "INVENTORY OPERATIONS DASHBOARD",
     "description": "A dashboard-oriented inventory system for stock visibility, item tracking, operational reporting, and internal team monitoring.",
     "overview": "Inventory operations dashboard built to make stock status, item movement, category data, and reporting easier to monitor from one operational workspace.",
+    "problem": "Inventory teams need a clear way to monitor stock, item movement, categories, and reporting without jumping between scattered records.",
+    "impact": "Makes stock visibility, item tracking, and operational review faster to scan from a single dashboard-oriented workspace.",
+    "constraint": "Inventory data must support frequent updates, readable summaries, and reporting without making the interface feel dense.",
     "role": "Full Stack Developer",
     "roleDescription": "Worked on dashboard structure, CRUD flow, data presentation, and backend integration for inventory and reporting features.",
     "stack": [
@@ -272,6 +284,9 @@
     "title": "DOCUMENT CONTROL PLATFORM",
     "description": "Internal document management platform for file organization, approval flow, activity tracking, and team-facing operational records.",
     "overview": "Document control platform focused on organizing operational files, tracking status, keeping ownership visible, and reducing scattered document handling.",
+    "problem": "Operational teams need document records, status tracking, uploads, and review workflows to stay organized and searchable.",
+    "impact": "Improves document visibility and reduces manual tracking across internal operation and review processes.",
+    "constraint": "Document states, permissions, and file references must stay reliable while keeping daily input flows simple.",
     "role": "Full Stack Developer",
     "roleDescription": "Handled application flow, backend records, document status handling, and UI screens for structured file operations.",
     "stack": [
@@ -338,6 +353,9 @@
     "title": "CRM OPERATIONS WORKSPACE",
     "description": "A CRM-style workspace for pipeline visibility, customer records, follow-up tasks, reporting, and team operation tracking.",
     "overview": "Business operations workspace designed around customer context, pipeline visibility, follow-up tasks, and lightweight reporting for operational teams.",
+    "problem": "Customer records, follow-up tasks, status movement, and activity reports need a cleaner workspace for repeated team use.",
+    "impact": "Helps teams scan pipeline activity, track follow-ups, and review customer context with less operational friction.",
+    "constraint": "The interface must balance dashboard summaries, task queues, and record detail without overloading repeat users.",
     "role": "Full Stack Developer",
     "roleDescription": "Worked across UI structure, customer data flow, backend endpoints, and dashboard screens for CRM-style operations.",
     "stack": [

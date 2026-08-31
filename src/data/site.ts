@@ -10,6 +10,30 @@ export type SiteNavItem = {
   href: string;
 };
 
+export type SiteSeo = {
+  siteUrl: string;
+  title: {
+    default: string;
+    template: string;
+  };
+  description: string;
+  keywords: string[];
+  creator: string;
+  openGraph: {
+    title: string;
+    description: string;
+    url: string;
+    siteName: string;
+    image: string;
+    imageAlt: string;
+  };
+  twitter: {
+    card: "summary_large_image";
+    title: string;
+    description: string;
+  };
+};
+
 export type ProjectsArchiveContent = {
   nav: SiteNavItem[];
   backLabel: string;
@@ -41,6 +65,11 @@ export type ProjectDetailContent = {
     focus: string;
   };
   overviewEyebrow: string;
+  overviewMetaLabels: {
+    problem: string;
+    impact: string;
+    constraint: string;
+  };
   roleEyebrow: string;
   previousLabel: string;
   nextLabel: string;
@@ -66,10 +95,11 @@ export type ProjectDetailContent = {
 
 type SiteContent = {
   brand: SiteBrand;
+  seo: SiteSeo;
   projectsArchive: ProjectsArchiveContent;
   projectDetail: ProjectDetailContent;
 };
 
 const content = siteContent as SiteContent;
 
-export const { brand, projectsArchive, projectDetail } = content;
+export const { brand, seo, projectsArchive, projectDetail } = content;

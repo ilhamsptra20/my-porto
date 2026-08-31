@@ -17,6 +17,9 @@ export type Project = {
   title: string;
   description: string;
   overview: string;
+  problem: string;
+  impact: string;
+  constraint: string;
   role: string;
   roleDescription: string;
   stack: string[];
