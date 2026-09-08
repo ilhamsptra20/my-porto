@@ -41,8 +41,31 @@ export async function generateMetadata({
   }
 
   return {
-    title: `${project.title} | ${projectDetail.metadataTitleSuffix}`,
+    title: project.title,
     description: project.description,
+    alternates: {
+      canonical: project.href,
+    },
+    openGraph: {
+      title: `${project.title} | ${projectDetail.metadataTitleSuffix}`,
+      description: project.description,
+      url: project.href,
+      type: "article",
+      images: [
+        {
+          url: project.image,
+          width: 1200,
+          height: 630,
+          alt: `${project.title} project preview`,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${project.title} | ${projectDetail.metadataTitleSuffix}`,
+      description: project.description,
+      images: [project.image],
+    },
   };
 }
 

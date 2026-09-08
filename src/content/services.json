@@ -1,0 +1,98 @@
+{
+  "page": {
+    "nav": [
+      { "label": "Home", "href": "/" },
+      { "label": "Projects", "href": "/projects" },
+      { "label": "Contact", "href": "/#contact" }
+    ],
+    "backLabel": "Back home",
+    "eyebrow": "Services / 2026",
+    "titleLines": ["Services", "that ship."],
+    "description": "Practical software engineering support for teams that need clear interfaces, dependable integrations, and systems that stay maintainable after launch.",
+    "pricingEyebrow": "Pricing guide",
+    "pricingNote": "Starting prices are directional. Final quotes depend on scope, timeline, integrations, and delivery requirements.",
+    "includedLabel": "Typical scope",
+    "durationLabel": "Timeline",
+    "fitLabel": "Good fit",
+    "deliverablesLabel": "Includes",
+    "contactCta": "Discuss a project",
+    "contactHref": "/#contact",
+    "processEyebrow": "How I work",
+    "processTitle": "Clear from the first call.",
+    "process": [
+      {
+        "number": "01",
+        "title": "Discover",
+        "description": "Align on the problem, users, constraints, and the smallest useful version to ship."
+      },
+      {
+        "number": "02",
+        "title": "Build",
+        "description": "Turn the scope into a focused, production-ready implementation with visible progress."
+      },
+      {
+        "number": "03",
+        "title": "Improve",
+        "description": "Refine the details, document the decisions, and leave the system easier to operate."
+      }
+    ]
+  },
+  "services": [
+    {
+      "number": "01",
+      "name": "Landing Page / Company Profile",
+      "description": "A focused, responsive website that explains what you do and gives visitors a clear next step.",
+      "pricePrefix": "From",
+      "price": "Rp 2.500.000",
+      "duration": "1–2 weeks",
+      "fit": "Personal brands, small businesses, and focused launches.",
+      "deliverables": [
+        "Responsive page implementation",
+        "Content and section structure",
+        "Deployment-ready setup"
+      ]
+    },
+    {
+      "number": "02",
+      "name": "Custom Web Application",
+      "description": "A tailored web application for operational workflows, dashboards, or customer-facing products.",
+      "pricePrefix": "From",
+      "price": "Rp 8.000.000",
+      "duration": "3–6 weeks",
+      "fit": "Teams replacing manual work or validating a product idea.",
+      "deliverables": [
+        "Frontend and backend implementation",
+        "Database and role-aware workflows",
+        "Production-ready application structure"
+      ]
+    },
+    {
+      "number": "03",
+      "name": "API & Backend Integration",
+      "description": "Reliable connections between your application, payment providers, third-party APIs, and internal systems.",
+      "pricePrefix": "From",
+      "price": "Rp 5.000.000",
+      "duration": "2–4 weeks",
+      "fit": "Products that need data to move consistently across systems.",
+      "deliverables": [
+        "API design and implementation",
+        "Validation, error handling, and logging",
+        "Integration notes for ongoing maintenance"
+      ]
+    },
+    {
+      "number": "04",
+      "name": "Maintenance & System Improvement",
+      "description": "Targeted improvements that make an existing product faster, clearer, and less painful to operate.",
+      "pricePrefix": "From",
+      "price": "Rp 2.000.000 / month",
+      "duration": "Flexible",
+      "fit": "Existing systems that need steady technical ownership.",
+      "deliverables": [
+        "Bug fixes and focused enhancements",
+        "Performance and usability improvements",
+        "Technical review and prioritized backlog"
+      ]
+    }
+  ]
+}

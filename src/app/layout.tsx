@@ -8,8 +8,10 @@ const inter = Inter({
   display: "swap",
 });
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? seo.siteUrl;
+
 export const metadata: Metadata = {
-  ...(seo.siteUrl ? { metadataBase: new URL(seo.siteUrl) } : {}),
+  ...(siteUrl ? { metadataBase: new URL(siteUrl) } : {}),
   title: {
     default: seo.title.default,
     template: seo.title.template,
@@ -18,6 +20,20 @@ export const metadata: Metadata = {
   keywords: seo.keywords,
   creator: seo.creator,
   authors: [{ name: seo.creator }],
+  alternates: {
+    canonical: "/",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
   openGraph: {
     title: seo.openGraph.title,
     description: seo.openGraph.description,

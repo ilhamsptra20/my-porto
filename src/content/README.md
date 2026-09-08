@@ -7,6 +7,7 @@ Edit these JSON files when updating portfolio copy:
 - `experience.json`: work experience timeline and technology logo groups.
 - `profile.json`: personal identity, capabilities, education, credentials, and contact links.
 - `site.json`: shared labels, navigation copy, project page labels, and global SEO metadata.
+- `services.json`: service names, starting prices, timelines, deliverables, and services page copy.
 
 For project media, keep each item complete:
 
@@ -16,4 +17,4 @@ For project media, keep each item complete:
 - `figure`: figure number, such as `FIG. 01`.
 - `caption`: compact caption shown below media.
 
-When the portfolio has a production domain, update `seo.siteUrl` in `site.json`.
+When the portfolio has a production domain, set `NEXT_PUBLIC_SITE_URL` to the public URL used for social previews. The value in `seo.siteUrl` remains a local fallback for development.
