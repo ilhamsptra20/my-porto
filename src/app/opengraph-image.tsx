@@ -104,22 +104,24 @@ export default function Image() {
           >
             <span>Full Stack</span>
             <span>/</span>
-            <span>Systems</span>
+            <span>Web Apps</span>
             <span>/</span>
             <span>Architecture</span>
           </div>
           <h1
             style={{
               margin: 0,
-              fontSize: 96,
-              lineHeight: 0.9,
+              display: "flex",
+              flexDirection: "column",
+              fontSize: 104,
+              lineHeight: 0.88,
               fontWeight: 900,
               letterSpacing: 0,
               textTransform: "uppercase",
-              maxWidth: 1020,
             }}
           >
-            Software Engineer for financial and enterprise systems
+            <span>Software</span>
+            <span style={{ color: "#087f70" }}>Engineer</span>
           </h1>
         </div>
 
@@ -136,7 +138,9 @@ export default function Image() {
             color: "#404040",
           }}
         >
-          <span style={{ maxWidth: 720 }}>{seo.openGraph.description}</span>
+          <span style={{ maxWidth: 720 }}>
+            Building financial systems, enterprise applications, and dependable software infrastructure.
+          </span>
           <span
             style={{
               fontSize: 20,
