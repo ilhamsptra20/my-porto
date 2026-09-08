@@ -9,6 +9,8 @@ Edit these JSON files when updating portfolio copy:
 - `site.json`: shared labels, navigation copy, project page labels, and global SEO metadata.
 - `services.json`: service names, starting prices, timelines, deliverables, and services page copy.
 
+Vercel Web Analytics is mounted in `src/app/layout.tsx`. Enable Analytics in the Vercel project dashboard after deployment to view page views, referrers, devices, browsers, operating systems, and locations.
+
 For project media, keep each item complete:
 
 - `src`: image URL.
